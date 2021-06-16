@@ -9,6 +9,7 @@
     <script type="text/javascript" src="public/js/jquery.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="public/js/user.js"></script>
 </head>
 
 <body>
@@ -24,7 +25,7 @@
     <div class="container">
         <div class="row login-register-page">
             <div class="col-md-6">
-                <form action="" method="post">
+                <form action="?controlador=User&accion=iniciar_sesion" method="post">
                     <div class="row">
                         <div class="col-md-12 login-form-header">
                             <p class="login-form-font-header">Login <span>ArtiMaxCR</span>
@@ -33,12 +34,12 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 login-row">
-                            <input name="usuario" type="usuario" placeholder="Usuario" required />
+                            <input name="usuario" id="usuario" type="usuario" placeholder="Usuario" required />
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-12 login-row">
-                            <input name="contrasennia" type="contrasennia" placeholder="Contraseña" required />
+                            <input name="contrasennia" id="contrasennia" type="contrasennia" placeholder="Contraseña" required />
                         </div>
                     </div>
                     <div class="row">
@@ -51,7 +52,7 @@
 
             <div class="col-md-6">
 
-                <form action="#" method="post">
+                <form action="" onchange="buscar_actor_genero_Ajax($('#genero').val()); return false;" method="post">
 
                     <div class="row">
                         <div class=" col-md-12 register-form-header">
@@ -84,7 +85,7 @@
                     <!-- genero -->
                     <div class="row">
                         <div class="col-md-12">
-                            <select name="generos" id="generos">
+                            <select name="genero" id="generos">
                                 <option value="masculino">Masculino</option>
                                 <option value="femenino">Femenino</option>
                                 <option value="otro">Otro</option>
@@ -100,6 +101,9 @@
                 </form>
             </div>
         </div>
+    </div>
+    <div class="mensaje">
+    
     </div>
 
 </body>
