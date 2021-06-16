@@ -25,7 +25,7 @@
     <div class="container">
         <div class="row login-register-page">
             <div class="col-md-6">
-                <form action="?controlador=User&accion=iniciar_sesion" method="post">
+                <form method="post">
                     <div class="row">
                         <div class="col-md-12 login-form-header">
                             <p class="login-form-font-header">Login <span>ArtiMaxCR</span>
@@ -44,7 +44,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 login-row">
-                            <button onchange="" class="btn btn-primary">Entrar</button>
+                            <button onclick="iniciar_sesion($('#usuario').val(),$('#contrasennia').val()); return false;" class="btn btn-primary">Entrar</button>
                         </div>
                     </div>
                 </form>
@@ -52,7 +52,7 @@
 
             <div class="col-md-6">
 
-                <form action="" onchange="buscar_actor_genero_Ajax($('#genero').val()); return false;" method="post">
+                <form method="post">
 
                     <div class="row">
                         <div class=" col-md-12 register-form-header">
@@ -63,13 +63,13 @@
                     <!-- usuario -->
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="usuario" name="usuario" placeholder="Nombre de usuario" required>
+                            <input type="usuario" id="usuario2" name="usuario" placeholder="Nombre de usuario" required>
                         </div>
                     </div>
                     <!-- edad -->
                     <div class="row">
                         <div class="col-md-12">
-                            <input type="edad" name="edad" placeholder="Edad" required>
+                            <input type="edad" id="edad" name="edad" placeholder="Edad" required>
                         </div>
                     </div>
                     <!-- direccion -->
@@ -80,12 +80,12 @@
                     </div>
                     <div class="row"></div>
                     <div class="col-md-12">
-                        <input type="contrasennia" name="contrasennia" placeholder="Contraseña">
+                        <input type="contrasennia" id="contrasenniaR" name="contrasenniaR" placeholder="Contraseña">
                     </div>
                     <!-- genero -->
                     <div class="row">
                         <div class="col-md-12">
-                            <select name="genero" id="generos">
+                            <select name="genero" id="genero">
                                 <option value="masculino">Masculino</option>
                                 <option value="femenino">Femenino</option>
                                 <option value="otro">Otro</option>
@@ -95,7 +95,8 @@
                     <!-- boton registrar -->
                     <div class="row">
                         <div class="col-md-12 register-row">
-                            <button class="btn btn-primary">Registrar</button>
+                            <button onclick="registrar_usuario($('#usuario2').val(),$('#edad').val(),
+                            $('#direccion').val(),$('#genero').val(),$('#contrasenniaR').val()); return false;" class="btn btn-primary">Registrar</button>
                         </div>
                     </div>
                 </form>

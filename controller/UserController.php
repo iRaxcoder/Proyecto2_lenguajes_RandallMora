@@ -11,38 +11,62 @@ class UserController
 
     public function iniciar_sesion()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (isset($_POST['usuario']) && isset($_POST['contrasennia'])) {
-                require 'model/UserModel.php';
-                $usuario = new UserModel();
-                $data = $usuario->iniciar_sesion($_POST['usuario'], $_POST['contrasennia']);
-                header("HTTP/1.1 200 OK");
-                echo json_encode($data);
-                exit();
-            }
+        $url = "http://localhost/API_REST_ArtiMax/indexAPI.php";
+
+        $data_array = array(
+            'usuario' => $_POST['usuario'],
+            'contrasennia' => $_POST['contrasennia']
+        );
+
+        $data = http_build_query($data_array);
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $resp = curl_exec($ch);
+
+        if ($e = curl_error($ch)) {
+            echo $e;
+        } else {
+            $decoded = json_decode($resp);
+            echo $decoded;
         }
+        curl_close($ch);
     }
 
     public function registrar_usuario()
     {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            if (
-                isset($_POST['usuario']) && isset($_POST['edad']) && isset($_POST['direccion']) && isset($_POST['genero'])
-                && isset($_POST['contrasennia'])
-            ) {
-                require 'model/UserModel.php';
-                $usuario = new UserModel();
-                $data = $usuario->registrar_usuario(
-                    $_POST['usuario'],
-                    $_POST['edad'],
-                    $_POST['direccion'],
-                    $_POST['genero'],
-                    $_POST['contrasennia']
-                );
-                header("HTTP/1.1 200 OK");
-                echo json_encode($data);
-                exit();
-            }
+        $url = "http://localhost/API_REST_ArtiMax/indexAPI.php";
+
+        $data_array = array(
+            'usuario' => $_POST['usuario2'],
+            'edad' => $_POST['edad'],
+            'direccion' => $_POST['direccion'],
+            'genero' => $_POST['genero'],
+            'contrasennia' => $_POST['contrasennia2']
+        );
+
+        $data = http_build_query($data_array);
+
+        $ch = curl_init();
+
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+
+        $resp = curl_exec($ch);
+
+        if ($e = curl_error($ch)) {
+            echo $e;
+        } else {
+            $decoded = json_decode($resp);
+            echo $decoded;
         }
+        curl_close($ch);
     }
 }
