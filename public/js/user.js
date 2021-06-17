@@ -70,12 +70,9 @@ function registrar_usuario(usuario, role, edad, direccion, genero, contrasennia)
             div.innerHTML = html_text;
         },
         error: function (jqXHR, textStatus, errorThrown) {
-
             alert(textStatus);
         }
 
     });
     return false;
-
-
 }

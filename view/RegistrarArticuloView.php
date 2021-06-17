@@ -10,6 +10,7 @@ include_once './view/headerAdminView.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
 </head>
 
 <body>
@@ -22,7 +23,7 @@ include_once './view/headerAdminView.php';
 
     <div class="col-md-12">
 
-        <form method="post">
+        <form action="?controlador=Articulo&accion=registrar_articulo" method="post">
 
             <div class="row">
                 <div class=" col-md-12 register-form-header">
@@ -33,7 +34,7 @@ include_once './view/headerAdminView.php';
             <!-- nombre -->
             <div class="row">
                 <div class="col-md-12">
-                    <input type="nombre" id="nombre" name="nombre" placeholder="nombre de articulo" required>
+                    <input type="nombre" id="nombreArticulo" name="nombreArticulo" placeholder="nombre de articulo" required>
                 </div>
             </div>
             <!-- precio -->
@@ -52,6 +53,7 @@ include_once './view/headerAdminView.php';
             <div class="row">
                 <div class="col-md-12">
                     <select name="categoria" id="categoria">
+                    <option value="">Seleccionar categoria</option>
                         <?php
                         if (isset($vars['categorias'])) {
                             foreach ($vars['categorias'] as $item) {
@@ -74,8 +76,7 @@ include_once './view/headerAdminView.php';
     <!-- boton registrar -->
     <div class="row">
         <div class="col-md-12 register-row">
-            <button onclick="registrar_usuario($('#usuario2').val(),2,$('#edad').val(),
-                            $('#direccion').val(),$('#genero').val(),$('#contrasenniaR').val()); return false;" class="btn btn-primary">Registrar</button>
+            <button onclick="" class="btn btn-primary">Registrar</button>
         </div>
     </div>
     </form>

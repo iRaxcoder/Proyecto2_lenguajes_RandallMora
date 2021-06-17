@@ -4,25 +4,23 @@ class ArticuloModel
 {
     public function __construct()
     {
+        require './model/HTTPOP.php';
     }
 
     public function mostrar_categorias()
     {
-        $url = "http://localhost/API_REST_ArtiMax/indexAPI.php";
+        return HTTPOP::METODO_GET();
+    }
 
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        $resp = curl_exec($ch);
-
-        if ($e = curl_error($ch)) {
-            echo $e;
-        } else {
-           return json_decode($resp,true) ;
-        }
-        curl_close($ch);
+    public function registrar_articulo($nombre, $precio, $descripcion, $categoria, $imagen)
+    {
+        $dataArray = array(
+            "nombreProducto" => $nombre,
+            "precio" => $precio,
+            "descripcion" => $descripcion,
+            "categoria" => $categoria,
+            "imagen" => $imagen
+        );
+        return HTTPOP::METODO_POST($dataArray);
     }
 }
