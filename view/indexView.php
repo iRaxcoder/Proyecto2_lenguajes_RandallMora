@@ -95,7 +95,7 @@
                     <!-- boton registrar -->
                     <div class="row">
                         <div class="col-md-12 register-row">
-                            <button onclick="registrar_usuario($('#usuario2').val(),$('#edad').val(),
+                            <button onclick="registrar_usuario($('#usuario2').val(),2,$('#edad').val(),
                             $('#direccion').val(),$('#genero').val(),$('#contrasenniaR').val()); return false;" class="btn btn-primary">Registrar</button>
                         </div>
                     </div>

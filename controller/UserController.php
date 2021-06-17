@@ -43,11 +43,12 @@ class UserController
         $url = "http://localhost/API_REST_ArtiMax/indexAPI.php";
 
         $data_array = array(
-            'usuario' => $_POST['usuario2'],
+            'usuario2' => $_POST['usuario2'],
             'edad' => $_POST['edad'],
             'direccion' => $_POST['direccion'],
             'genero' => $_POST['genero'],
-            'contrasennia' => $_POST['contrasennia2']
+            'contrasennia2' => $_POST['contrasennia2'],
+            'role' => $_POST['role']
         );
 
         $data = http_build_query($data_array);
