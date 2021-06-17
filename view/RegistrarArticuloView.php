@@ -1,5 +1,5 @@
 <?php
-include_once '../public/headerAdmin.php';
+include_once './view/headerAdminView.php';
 ?>
 
 <!DOCTYPE html>

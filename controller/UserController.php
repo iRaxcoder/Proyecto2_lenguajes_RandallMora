@@ -11,63 +11,32 @@ class UserController
 
     public function iniciar_sesion()
     {
-        $url = "http://localhost/API_REST_ArtiMax/indexAPI.php";
+        require './model/UserModel.php';
+        $user = new UserModel();
+        $respuesta = $user->iniciar_sesion($_POST['usuario'], $_POST['contrasennia']);
 
-        $data_array = array(
-            'usuario' => $_POST['usuario'],
-            'contrasennia' => $_POST['contrasennia']
-        );
+        switch ($respuesta) {
+            case 0:
+                echo '<script> alert("El usuario no existe")</script>';
+                break;
+            case 1:
+                $this->view->show("headerAdminView.php", null);
+                break;
+            case 2:
 
-        $data = http_build_query($data_array);
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        $resp = curl_exec($ch);
-
-        if ($e = curl_error($ch)) {
-            echo $e;
-        } else {
-            $decoded = json_decode($resp);
-            echo $decoded;
+                break;
         }
-        curl_close($ch);
     }
 
     public function registrar_usuario()
     {
-        $url = "http://localhost/API_REST_ArtiMax/indexAPI.php";
-
-        $data_array = array(
-            'usuario2' => $_POST['usuario2'],
-            'edad' => $_POST['edad'],
-            'direccion' => $_POST['direccion'],
-            'genero' => $_POST['genero'],
-            'contrasennia2' => $_POST['contrasennia2'],
-            'role' => $_POST['role']
-        );
-
-        $data = http_build_query($data_array);
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_POST, true);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-
-        $resp = curl_exec($ch);
-
-        if ($e = curl_error($ch)) {
-            echo $e;
-        } else {
-            $decoded = json_decode($resp);
-            echo $decoded;
+        require './model/UserModel.php';
+        $user = new UserModel();
+        $respuesta = $user->registrar_usuario($_POST['usuario2'], $_POST['edad'], $_POST['direccion'], $_POST['genero'], $_POST['contrasennia2'], $_POST['role']);
+        if ($respuesta == 0) {
+            echo "0";
+        } else if ($respuesta == 1) {
+            echo "1";
         }
-        curl_close($ch);
     }
 }

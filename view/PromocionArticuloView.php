@@ -1,5 +1,5 @@
 <?php
-include_once '../public/headerAdmin.php';
+include_once 'headerAdminView.php';
 ?>
 
 <table class="table table-hover">

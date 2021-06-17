@@ -1,10 +1,10 @@
 
-<?php
-session_start();
-if (isset($_post['usuario'])){
-$_SESSION['admin']=$_post['usuario'];
-}
-?>
+<!-- <?php
+// session_start();
+// if (isset($_post['usuario'])){
+// $_SESSION['admin']=$_post['usuario'];
+// }
+?> -->
 
 
 <!DOCTYPE html>
@@ -34,7 +34,7 @@ $_SESSION['admin']=$_post['usuario'];
     <div class="container">
         <div class="row login-register-page">
             <div class="col-md-6">
-                <form method="post">
+                <form action="?controlador=User&accion=iniciar_sesion" method="post">
                     <div class="row">
                         <div class="col-md-12 login-form-header">
                             <p class="login-form-font-header">Login <span>ArtiMaxCR</span>
@@ -53,7 +53,7 @@ $_SESSION['admin']=$_post['usuario'];
                     </div>
                     <div class="row">
                         <div class="col-md-12 login-row">
-                            <button onclick="iniciar_sesion($('#usuario').val(),$('#contrasennia').val()); return false;" class="btn btn-primary">Entrar</button>
+                            <button class="btn btn-primary">Entrar</button>
                         </div>
                     </div>
                 </form>

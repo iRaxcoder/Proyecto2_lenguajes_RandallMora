@@ -7,7 +7,7 @@ class AdminController
         $this->view = new View();
     }
 
-    public function mostrar_registro_articulo()
+    public function mostrar_registro_articulo_view()
     {
         require './model/ArticuloModel.php';
         $items = new ArticuloModel();
@@ -16,6 +16,10 @@ class AdminController
     }
 
     public function mostrar_principal(){
-        $this->view->show("headerAdmin.php", null);
+        $this->view->show("headerAdminView.php", null);
+    }
+
+    public function mostrar_promociones_view(){
+        $this->view->show("PromocionArticuloView.php", null);
     }
 }

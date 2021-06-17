@@ -8,32 +8,31 @@ class UserModel
     public function __construct()
     {
         require 'libs/SPDO.php';
+        require 'HTTPOP.php';
         $this->db = SPDO::singleton();
     }
 
     public function iniciar_sesion($usuario, $contrasennia)
     {
+        $data_array = array(
+            'usuario' => $usuario,
+            'contrasennia' => $contrasennia
+        );
 
-        $consulta = $this->db->prepare('call sp_iniciar_sesion(:usuario,:contrasennia,@salida)');
-        $consulta->bindParam(':usuario', $usuario);
-        $consulta->bindParam(':contrasennia', $contrasennia);
-        $consulta->execute();
-        $consulta->closeCursor();
-        $resultado = $this->db->query("select @salida")->fetch(PDO::FETCH_ASSOC);
-        return $resultado['@salida'];
+        return HTTPOP::METODO_POST($data_array);
     }
 
-    public function registrar_usuario($usuario,$edad,$direccion,$genero,$contrasennia){
-        $consulta = $this->db->prepare('call sp_registrar_usuario(:param_usuario,:param_edad,:param_direccion,:param_genero,:param_contrasennia,@salida)');
-        $consulta->bindParam(':param_usuario', $usuario);
-        $consulta->bindParam(':param_edad', $edad);
-        $consulta->bindParam(':param_direccion', $direccion);
-        $consulta->bindParam(':param_genero', $genero);
-        $consulta->bindParam(':param_contrasennia', $contrasennia);
-        $consulta->execute();
-        $consulta->closeCursor();
-        $resultado = $this->db->query("select @salida")->fetch(PDO::FETCH_ASSOC);
-        echo 'ajja';
-        return $resultado['@salida'];
+    public function registrar_usuario($usuario, $edad, $direccion, $genero, $contrasennia, $role)
+    {
+        $data_array = array(
+            'usuario2' => $usuario,
+            'edad' => $edad,
+            'direccion' => $direccion,
+            'genero' => $genero,
+            'contrasennia2' => $contrasennia,
+            'role' => $role
+        );
+
+        return HTTPOP::METODO_POST($data_array);
     }
 }

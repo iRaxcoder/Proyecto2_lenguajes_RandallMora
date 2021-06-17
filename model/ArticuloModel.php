@@ -21,7 +21,7 @@ class ArticuloModel
         if ($e = curl_error($ch)) {
             echo $e;
         } else {
-            echo $resp;
+           return json_decode($resp,true) ;
         }
         curl_close($ch);
     }

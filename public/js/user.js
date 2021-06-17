@@ -79,33 +79,3 @@ function registrar_usuario(usuario, role, edad, direccion, genero, contrasennia)
 
 
 }
-
-function mostrar_modulo_admin() {
-    //?controlador=Admin&accion=mostrar_registro_articulo
-    alert("escucha");
-    $.ajax({
-
-        url: '?controlador=Admin&accion=mostrar_principal',
-        dataType: "text",
-        type: 'get',
-        beforeSend: function () {
-
-        },
-        success: function (response) {
-
-            alert(response);
-
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-
-            div = document.querySelector(".mensaje");
-            var html_text = "<div class='alert alert-danger' role='alert'>" + "Ha ocurrido un error al recuperar" + "</div>";
-            div.innerHTML = html_text;
-        }
-    });
-    return false;
-
-
-    alert("muestra");
-
-}

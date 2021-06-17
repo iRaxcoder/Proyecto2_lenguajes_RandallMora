@@ -23,17 +23,17 @@
 
 
     <nav class="navbar  navbar-expand-lg navbar-light bg-light ">
-        <a class="navbar-brand" href="./headerAdmin.php">ArtiMax CR</a>
+        <a class="navbar-brand" href="/view/headerAdminView.php">ArtiMax CR</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link" href="index.php">Registrar articulo <span class="sr-only"></span></a>
+                    <a class="nav-link" href="?controlador=Admin&accion=mostrar_registro_articulo_view">Registrar articulo <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gestion de promociones</a>
+                    <a class="nav-link" href="?controlador=Admin&accion=mostrar_promociones_view">Gestion de promociones</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Gestion usuario admin</a>
