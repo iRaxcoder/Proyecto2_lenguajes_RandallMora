@@ -1,5 +1,5 @@
 function iniciar_sesion(usuario, contrasennia) {
-
+    alert(usuario + contrasennia)
     var parametros = {
         "usuario": usuario,
         "contrasennia": contrasennia
@@ -13,8 +13,29 @@ function iniciar_sesion(usuario, contrasennia) {
 
         },
         success: function (response) {
+
+            if (response == "0") {
+                div = document.querySelector(".mensaje");
+                var html_text = "<div class='alert alert-danger' role='alert'>Ha ocurrido un error</div>";
+                div.innerHTML = html_text;
+            }
+            if (response == "1") {
+                mostrar_modulo_admin();
+            }
+            if (response == "2") {
+
+            }
+
+
+            // div = document.querySelector(".mensaje");
+            // var html_text = "<div class='alert alert-success' role='alert'>" + response + "</div>";
+            // div.innerHTML = html_text;
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
             div = document.querySelector(".mensaje");
-            var html_text = "<div class='alert alert-success' role='alert'>" + response + "</div>";
+            var html_text = "<div class='alert alert-danger' role='alert'>" + "Ha ocurrido un error" + "</div>";
             div.innerHTML = html_text;
         }
     });
@@ -40,9 +61,9 @@ function registrar_usuario(usuario, role, edad, direccion, genero, contrasennia)
 
         },
         success: function (response) {
-            mensaje="Se ha registrado con éxito";
-            if(response=="0"){
-                mensaje="Ha ocurrido un error, o ya existe el usuario.";
+            mensaje = "Se ha registrado con éxito";
+            if (response == "0") {
+                mensaje = "Ha ocurrido un error, o ya existe el usuario.";
             }
             div = document.querySelector(".mensaje");
             var html_text = "<div class='alert alert-success' role='alert'>" + mensaje + "</div>";
@@ -55,4 +76,36 @@ function registrar_usuario(usuario, role, edad, direccion, genero, contrasennia)
 
     });
     return false;
+
+
+}
+
+function mostrar_modulo_admin() {
+    //?controlador=Admin&accion=mostrar_registro_articulo
+    alert("escucha");
+    $.ajax({
+
+        url: '?controlador=Admin&accion=mostrar_principal',
+        dataType: "text",
+        type: 'get',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+
+            alert(response);
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+
+            div = document.querySelector(".mensaje");
+            var html_text = "<div class='alert alert-danger' role='alert'>" + "Ha ocurrido un error al recuperar" + "</div>";
+            div.innerHTML = html_text;
+        }
+    });
+    return false;
+
+
+    alert("muestra");
+
 }

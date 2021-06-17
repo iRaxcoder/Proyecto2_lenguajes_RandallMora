@@ -1,3 +1,12 @@
+
+<?php
+session_start();
+if (isset($_post['usuario'])){
+$_SESSION['admin']=$_post['usuario'];
+}
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
