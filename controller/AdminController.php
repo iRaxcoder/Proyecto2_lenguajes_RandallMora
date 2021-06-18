@@ -28,4 +28,9 @@ class AdminController
 
         $this->view->show("PromocionArticuloView.php", $data);
     }
+
+    public function mostrar_gestion_usuario_admin()
+    {
+        $this->view->show("RegistrarAdminView.php", null);
+    }
 }

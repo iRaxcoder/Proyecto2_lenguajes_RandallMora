@@ -22,7 +22,7 @@
     <!-- nav -->
 
 
-    <nav class="navbar  navbar-expand-lg navbar-light bg-light ">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
         <a class="navbar-brand" href="/view/headerAdminView.php">ArtiMax CR</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -36,13 +36,12 @@
                     <a class="nav-link" href="?controlador=Admin&accion=mostrar_promociones_view">Gestion de promociones</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Gestion usuario admin</a>
+                    <a class="nav-link" href="?controlador=Admin&accion=mostrar_gestion_usuario_admin">Gestion usuario admin</a>
                 </li>
             </ul>
             </form>
         </div>
     </nav>
-
 </body>
 
 </html>
