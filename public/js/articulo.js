@@ -39,7 +39,7 @@ function registrar_promocion(fecha_inicial, fecha_final, id_articulo, precioNuev
     };
     $.ajax({
         data: parametros,
-        url: '?controlador=&accion=',
+        url: '?controladorArticulo=&accion=registrar_promocion',
         dataType: "json",
         type: 'post',
         beforeSend: function () {

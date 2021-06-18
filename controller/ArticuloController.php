@@ -39,6 +39,10 @@ class ArticuloController
             $_POST['precio_nuevo']
         );
 
-        echo $respuesta;
+        if ($respuesta == 1) {
+            echo '<script> alert("Articulo registrado con éxito.")</script>';
+            $data['articulos'] = $articulo->obtener_articulos();
+            $this->view->show("PromocionArticuloView.php", $data);
+        }
     }
 }

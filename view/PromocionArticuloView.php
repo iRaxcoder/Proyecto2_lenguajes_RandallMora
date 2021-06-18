@@ -10,7 +10,7 @@ include_once 'headerAdminView.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gestor de promociones</title>
-
+    <script type="text/javascript" src="public/js/articulo.js"></script>
 </head>
 
 <body>
@@ -53,7 +53,7 @@ include_once 'headerAdminView.php';
 
     <div class="col-md-12">
 
-        <form method="post">
+        <form action="?controlador=Articulo&accion=registrar_promocion" method="post">
 
             <div class="row">
                 <div class=" col-md-12 register-form-header">
@@ -65,14 +65,14 @@ include_once 'headerAdminView.php';
             <div class="row">
                 <div class="col-md-12">
                     <label for="inicio">Fecha inicial</label>
-                    <input type="date" name="fecha_inicial">
+                    <input type="date" name="fecha_inicial" id="fecha_inicial">
                 </div>
             </div>
             <!-- fecha final -->
             <div class="row">
                 <div class="col-md-12">
                     <label for="final">Fecha final</label>
-                    <input type="date" name="fecha_final">
+                    <input type="date" name="fecha_final" id="fecha_final">
                 </div>
             </div>
             <!-- id -->
@@ -91,7 +91,7 @@ include_once 'headerAdminView.php';
             <!-- boton registrar -->
             <div class="row">
                 <div class="col-md-12 register-row">
-                    <button onclick="registrar_usuario(); return false;" class="btn btn-primary">Aplicar</button>
+                    <button class="btn btn-primary">Aplicar</button>
                 </div>
             </div>
         </form>
