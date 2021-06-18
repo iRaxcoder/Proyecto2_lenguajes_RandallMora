@@ -23,7 +23,10 @@ class UserController
                 $this->view->show("headerAdminView.php", null);
                 break;
             case 2:
-
+                require './model/ArticuloModel.php';
+                $articulo = new ArticuloModel();
+                $data['categorias'] = $articulo->mostrar_categorias();
+                $this->view->show("PrincipalVentasView.php", $data);
                 break;
         }
     }

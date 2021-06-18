@@ -23,7 +23,7 @@
 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-        <a class="navbar-brand" href="/view/headerAdminView.php">ArtiMax CR</a>
+        <a class="navbar-brand" href="#">ArtiMax CR</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -37,6 +37,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="?controlador=Admin&accion=mostrar_gestion_usuario_admin">Gestion usuario admin</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/index.php">Cerrar sesión</a>
                 </li>
             </ul>
             </form>

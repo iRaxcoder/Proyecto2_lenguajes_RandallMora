@@ -33,4 +33,6 @@ class AdminController
     {
         $this->view->show("RegistrarAdminView.php", null);
     }
+
+    
 }

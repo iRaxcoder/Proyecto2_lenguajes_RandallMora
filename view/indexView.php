@@ -1,12 +1,3 @@
-
-<!-- <?php
-// session_start();
-// if (isset($_post['usuario'])){
-// $_SESSION['admin']=$_post['usuario'];
-// }
-?> -->
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,10 +14,21 @@
 
 <body>
 
+    <?php
+    session_start();
+    ?>
+
+    <?php
+    if (isset($_POST['usuario'])) {
+        echo $_POST['usuario'];
+        $_SESSION['usuario'] = $_POST['usuario'];
+    }
+    ?>
+
     <div class="container">
         <div class="row text-center">
             <div class="col-md-12">
-                <h1>Bienvenido a la gestión de usuarios ArtiMax</h1>
+                <h1>Bienvenido al inicio ArtiMax</h1>
             </div>
         </div>
     </div>
@@ -53,7 +55,7 @@
                     </div>
                     <div class="row">
                         <div class="col-md-12 login-row">
-                            <button class="btn btn-primary">Entrar</button>
+                            <button type="summit" class="btn btn-primary">Entrar</button>
                         </div>
                     </div>
                 </form>
@@ -113,7 +115,7 @@
         </div>
     </div>
     <div class="mensaje">
-    
+
     </div>
 
 </body>

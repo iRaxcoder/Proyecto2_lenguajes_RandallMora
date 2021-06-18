@@ -4,16 +4,17 @@ class ArticuloModel
 {
     public function __construct()
     {
-        require './model/HTTPOP.php';
     }
 
     public function mostrar_categorias()
     {
+        require_once './model/HTTPOP.php';
         return HTTPOP::METODO_GET_PERS('categorias');
     }
 
     public function registrar_articulo($nombre, $precio, $descripcion, $categoria, $imagen)
     {
+        require_once './model/HTTPOP.php';
         $dataArray = array(
             "nombreArticulo" => $nombre,
             "precio" => $precio,
@@ -26,11 +27,13 @@ class ArticuloModel
 
     public function obtener_articulos()
     {
+        require_once './model/HTTPOP.php';
         return HTTPOP::METODO_GET_PERS('articulos');
     }
 
     public function registrar_promocion($fecha_inicial, $fecha_final, $id_articulo, $precio_nuevo)
     {
+        require_once './model/HTTPOP.php';
         $dataArray = array(
             "fecha_inicial" => $fecha_inicial,
             "fecha_final" => $fecha_final,

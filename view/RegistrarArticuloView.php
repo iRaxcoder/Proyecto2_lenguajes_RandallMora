@@ -19,6 +19,27 @@ include_once './view/headerAdminView.php';
 
 </html>
 
+<?php
+
+//*********MOVER IMAGEN SELECCIONADA A LA CARPETA IMG DEL PROYECTO */
+$carpetaDestino = "./public/img/";
+if (isset($_FILES["imagen"])) {
+    if (file_exists($carpetaDestino) || @mkdir($carpetaDestino)) {
+        $origen = $_FILES["imagen"]["tmp_name"];
+        $destino = $carpetaDestino . $_FILES["imagen"]["name"];
+
+        if (@move_uploaded_file($origen, $destino)) {
+            //echo "<br>" . $_FILES["imagen"]["name"] . " movido correctamente";
+        } else {
+            // echo "<br>No se ha podido mover el archivo: " . $_FILES["imagen"]["name"];
+        }
+    } else {
+        echo "<br>No existe el directorio";
+    }
+}
+//********************** */
+?>
+
 <div class="row text-center">
 
     <div class="col-md-12">

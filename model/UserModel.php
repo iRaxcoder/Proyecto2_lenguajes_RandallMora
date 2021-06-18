@@ -8,12 +8,12 @@ class UserModel
     public function __construct()
     {
         require 'libs/SPDO.php';
-        require 'HTTPOP.php';
         $this->db = SPDO::singleton();
     }
 
     public function iniciar_sesion($usuario, $contrasennia)
     {
+        require_once 'HTTPOP.php';
         $data_array = array(
             'usuario' => $usuario,
             'contrasennia' => $contrasennia
@@ -24,6 +24,7 @@ class UserModel
 
     public function registrar_usuario($usuario, $edad, $direccion, $genero, $contrasennia, $role)
     {
+        require_once 'HTTPOP.php';
         $data_array = array(
             'usuario2' => $usuario,
             'edad' => $edad,
