@@ -1,25 +1,20 @@
 <?php
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- * Description of IndexController
- *
- * @author XPC
- */
-class IndexController {
-    public function __construct() {
-        $this->view = new View();
-    } // constructor
-    
-     public function mostrar(){
-         $data['listado']=null;
+class IndexController{
+
+
+    public function __construct()
+    {
+        $this->view=new View();
+    } 
+
+    public function mostrar(){
+        $data['informacion']=null;
          
-         $this->view->show("indexView.php", $data);
-     } // listar
-     
-} // fin clase
+         $this->view->show("IndexView.php", $data);
+    }
+
+}
+
+

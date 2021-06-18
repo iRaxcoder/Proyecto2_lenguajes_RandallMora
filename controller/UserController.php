@@ -1,0 +1,42 @@
+<?php
+
+
+class UserController
+{
+
+    public function __construct()
+    {
+        $this->view = new View();
+    }
+
+    public function iniciar_sesion()
+    {
+        require './model/UserModel.php';
+        $user = new UserModel();
+        $respuesta = $user->iniciar_sesion($_POST['usuario'], $_POST['contrasennia']);
+
+        switch ($respuesta) {
+            case 0:
+                echo '<script> alert("El usuario no existe")</script>';
+                break;
+            case 1:
+                $this->view->show("headerAdminView.php", null);
+                break;
+            case 2:
+
+                break;
+        }
+    }
+
+    public function registrar_usuario()
+    {
+        require './model/UserModel.php';
+        $user = new UserModel();
+        $respuesta = $user->registrar_usuario($_POST['usuario2'], $_POST['edad'], $_POST['direccion'], $_POST['genero'], $_POST['contrasennia2'], $_POST['role']);
+        if ($respuesta == 0) {
+            echo "0";
+        } else if ($respuesta == 1) {
+            echo "1";
+        }
+    }
+}

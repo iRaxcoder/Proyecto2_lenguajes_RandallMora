@@ -5,9 +5,9 @@
     $config->set('modelFolder', 'model/');
     $config->set('viewFolder', 'view/');
     
-    $config->set('dbhost', 'localhost'); // ip
-    $config->set('dbname', 'supermercado');
-    $config->set('dbuser', 'root');
-    $config->set('dbpass', ''); 
+    $config->set('dbhost', '163.178.107.10'); // ip
+    $config->set('dbname', 'b95212_proyecto2_lenguajes');
+    $config->set('dbuser', 'laboratorios');
+    $config->set('dbpass', 'KmZpo.2796'); 
 ?>
 
