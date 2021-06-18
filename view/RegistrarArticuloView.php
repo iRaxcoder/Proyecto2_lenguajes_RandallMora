@@ -23,7 +23,7 @@ include_once './view/headerAdminView.php';
 
     <div class="col-md-12">
 
-        <form action="?controlador=Articulo&accion=registrar_articulo" method="post">
+        <form action="?controlador=Articulo&accion=registrar_articulo" enctype="multipart/form-data" method="post">
 
             <div class="row">
                 <div class=" col-md-12 register-form-header">
@@ -53,7 +53,7 @@ include_once './view/headerAdminView.php';
             <div class="row">
                 <div class="col-md-12">
                     <select name="categoria" id="categoria">
-                    <option value="">Seleccionar categoria</option>
+                        <option value="">Seleccionar categoria</option>
                         <?php
                         if (isset($vars['categorias'])) {
                             foreach ($vars['categorias'] as $item) {
@@ -76,7 +76,7 @@ include_once './view/headerAdminView.php';
     <!-- boton registrar -->
     <div class="row">
         <div class="col-md-12 register-row">
-            <button onclick="" class="btn btn-primary">Registrar</button>
+            <button class="btn btn-primary">Registrar</button>
         </div>
     </div>
     </form>

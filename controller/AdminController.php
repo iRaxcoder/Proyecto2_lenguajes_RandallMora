@@ -15,11 +15,17 @@ class AdminController
         $this->view->show("RegistrarArticuloView.php", $data);
     }
 
-    public function mostrar_principal(){
+    public function mostrar_principal()
+    {
         $this->view->show("headerAdminView.php", null);
     }
 
-    public function mostrar_promociones_view(){
-        $this->view->show("PromocionArticuloView.php", null);
+    public function mostrar_promociones_view()
+    {
+        require './model/ArticuloModel.php';
+        $items = new ArticuloModel();
+        $data['articulos'] = $items->obtener_articulos();
+
+        $this->view->show("PromocionArticuloView.php", $data);
     }
 }

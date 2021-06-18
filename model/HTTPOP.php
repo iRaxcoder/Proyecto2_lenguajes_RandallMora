@@ -50,6 +50,12 @@ class HTTPOP
         curl_close($ch);
     }
 
+    public static function METODO_GET_PERS($tipo)
+    {
+        $respuesta = file_get_contents("http://localhost/API_REST_ArtiMax/indexAPI.php?solicitud=" . $tipo);
+        return json_decode($respuesta, true);
+    }
+
     public static function METODO_PUT($data_array)
     {
         $url = "http://localhost/API_REST_ArtiMax/indexAPI.php";

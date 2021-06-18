@@ -2,6 +2,23 @@
 include_once 'headerAdminView.php';
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gestor de promociones</title>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
+
 <table class="table table-hover">
     <thead>
         <tr>
@@ -9,27 +26,26 @@ include_once 'headerAdminView.php';
             <th scope="col">Nombre</th>
             <th scope="col">Precio</th>
             <th scope="col">Descripcion</th>
+            <th scope="col">Categoria</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-        </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
+        <?php
+        if (isset($vars['articulos'])) {
+            foreach ($vars['articulos'] as $item) {
+        ?>
+
+                <tr>
+                    <th scope="row"><?php echo $item['ID_ARTICULO'] ?></th>
+                    <td><?php echo $item['NOMBRE_ARTICULO'] ?></td>
+                    <td><?php echo $item['PRECIO'] ?></td>
+                    <td><?php echo $item['DESCRIPCION'] ?></td>
+                    <td><?php echo $item['nombre_categoria'] ?></td>
+                </tr>
+        <?php
+            }
+        }
+        ?>
     </tbody>
 </table>
 
@@ -48,35 +64,34 @@ include_once 'headerAdminView.php';
             <!-- fecha inicio -->
             <div class="row">
                 <div class="col-md-12">
-                <label for="inicio">Fecha inicial</label>
-                    <input type="date" name="fecha inicial">
+                    <label for="inicio">Fecha inicial</label>
+                    <input type="date" name="fecha_inicial">
                 </div>
             </div>
-             <!-- fecha final -->
-             <div class="row">
+            <!-- fecha final -->
+            <div class="row">
                 <div class="col-md-12">
-                <label for="final">Fecha final</label>
-                    <input type="date" name="fecha final">
+                    <label for="final">Fecha final</label>
+                    <input type="date" name="fecha_final">
                 </div>
             </div>
             <!-- id -->
             <div class="row">
                 <div class="col-md-12">
-                    <input type="id" id="id" name="id" placeholder="id articulo" required>
+                    <input type="id" id="id_articulo" name="id_articulo" placeholder="id articulo" required>
                 </div>
             </div>
             <!-- precio promo -->
             <div class="row">
                 <div class="col-md-12">
-                    <input type="precio" id="precio" name="precio" placeholder="precio promo" required>
+                    <input type="precio" id="precio_nuevo" name="precio_nuevo" placeholder="precio promo $" required>
                 </div>
             </div>
-            
+
             <!-- boton registrar -->
             <div class="row">
                 <div class="col-md-12 register-row">
-                    <button onclick="registrar_usuario($('#usuario2').val(),2,$('#edad').val(),
-                $('#direccion').val(),$('#genero').val(),$('#contrasenniaR').val()); return false;" class="btn btn-primary">Aplicar</button>
+                    <button onclick="registrar_usuario(); return false;" class="btn btn-primary">Aplicar</button>
                 </div>
             </div>
         </form>
