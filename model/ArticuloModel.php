@@ -2,8 +2,11 @@
 
 class ArticuloModel
 {
+    protected $db;
     public function __construct()
     {
+        require_once 'libs/SPDO.php';
+        $this->db = SPDO::singleton();
     }
 
     public function mostrar_categorias()
@@ -41,5 +44,23 @@ class ArticuloModel
             "precio_nuevo" => $precio_nuevo,
         );
         return HTTPOP::METODO_POST($dataArray);
+    }
+
+    public function obtener_promociones()
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_promos()');
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
+    public function obtener_articulos_bd()
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_articulos()');
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
     }
 }

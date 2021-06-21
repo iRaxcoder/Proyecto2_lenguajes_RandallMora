@@ -19,7 +19,7 @@ include_once 'headerAdminView.php';
 
 </html>
 
-<table class="table table-hover">
+<table class="table table-hover table-responsive">
     <thead>
         <tr>
             <th scope="col">ID</th>
@@ -84,7 +84,7 @@ include_once 'headerAdminView.php';
             <!-- precio promo -->
             <div class="row">
                 <div class="col-md-12">
-                    <input type="precio" id="precio_nuevo" name="precio_nuevo" placeholder="precio promo $" required>
+                    <input type="number" id="precio_nuevo" name="precio_nuevo" placeholder="n%" required>
                 </div>
             </div>
 

@@ -2,17 +2,67 @@
 include_once './public/header.php';
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/public/js/articulo.js"></script>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<div class="row">
+    <div class="col-md-12">
+        <nav class="navbar navbar-right  navbar-expand-lg navbar-light bg-light">
+            <a class="navbar-brand" href="#">
+                <?php
+
+                if (isset($_SESSION['usuario'])) {
+                    echo 'Bienvenid@ ' . $_SESSION["usuario"];
+                } else {
+                    echo 'ArtiMax CR';
+                }
+
+                ?>
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse " id="navbarText">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a href='javascript:;' onclick="mostrar_articulos(1); return false;" class="nav-link"> Articulos <span class="sr-only"></span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Promociones</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link">Sobre nosotros</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
+</div>
 
 
 <div class=”row” style="margin: 1em; align-items: stretch; display:flex;">
-    <div class="col-md-2">
-        <nav class="navbar bg-light ">
+    <div class="col-md-2 bg-light">
+        <nav class="navbar">
             <ul class="nav navbar-nav">
-                <form method="post" class="form-inline" style="justify-content: right;">
-                    <input class="form-control mr-sm-2" style="justify-content: right;" type="search" placeholder="Articulo" aria-label="Search">
+                <form method="post" class=" form-inline" style="justify-content: right;">
+                    <input class="form-control mr-sm-2" style="justify-content: right; margin-bottom: 1em; border-bottom: crimson 5px solid;" type="search" placeholder="Articulo" aria-label="Search">
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar articulo</button>
                 </form>
-                <h5>Categorias</h3>
+                <h5 style="margin-top: 1em;">Categorias</h3>
                     <li class="nav-item">
                         <a class="nav-link" href="#"> Ver todos </a>
                     </li>
@@ -23,7 +73,6 @@ include_once './public/header.php';
                             <li class="nav-item">
                                 <a class="nav-link" href="#"> <?php echo $item['nombre_categoria']  ?> </a>
                             </li>
-
                     <?php
                         }
                     }
@@ -31,14 +80,35 @@ include_once './public/header.php';
             </ul>
         </nav>
     </div>
-    <div class=" text-center clear-fix col-md-8">
-        <h2>Promociones</h2>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut, accusantium voluptatibus a quia veritatis delectus ipsam debitis, ratione, vel cumque pariatur ducimus aut? Porro dicta veritatis doloribus assumenda qui non?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut, accusantium voluptatibus a quia veritatis delectus ipsam debitis, ratione, vel cumque pariatur ducimus aut? Porro dicta veritatis doloribus assumenda qui non?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut, accusantium voluptatibus a quia veritatis delectus ipsam debitis, ratione, vel cumque pariatur ducimus aut? Porro dicta veritatis doloribus assumenda qui non?</p>
-        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ut, accusantium voluptatibus a quia veritatis delectus ipsam debitis, ratione, vel cumque pariatur ducimus aut? Porro dicta veritatis doloribus assumenda qui non?</p>
+    <div class=" text-center clear-fix col-md-7 ">
+        <h2 class="ofrecimiento" style="border-bottom: red 5px solid; position: relative; left: 2em;">Promociones</h2>
+        <div class="row articulosOF" id="rowArticulos">
+            <?php
+            if (isset($vars['promos'])) {
+                foreach ($vars['promos'] as $item) {
+            ?>
+                    <div class='card col-md-1 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>
+                        <img class='card-img-top' height='200px' width='200' src='/public/img/<?php echo $item['nombre_imagen'] ?>' alt='Card image cap'>
+                        <div class='card-body'>
+                            <h5 class='card-title'><?php echo $item['nombre_articulo'] ?></h5>
+                            <p class='card-text'><?php echo $item['descripcion'] ?></p>
+                            <p><del>$<?php echo $item['precio_regular'] ?></del>$<?php echo $item['PRECIO_REBAJA'] ?> </p>
+                            <p>válido hasta el: <?php echo $item['fecha_final'] ?> </p>
+                            <a href='#' class='btn btn-primary' style="margin:1em;">
+                                <img height='25px' src='/public/img/carrito.png' alt='carrito'>
+                            </a>
+                            <a href='#' class='btn btn-primary'>
+                                <img height='25px' src='/public/img/comprar.png' alt='carrito'>
+                            </a>
+                        </div>
+                    </div>
+            <?php
+                }
+            }
+            ?>
+        </div>
     </div>
-    <div class="text-center clear-fix col-md-2">
-        <h2>Carrito</h2>
+    <div class="text-center clear-fix col-md-2 offset-md-1 bg-light">
+        <h2 style="border-bottom: red 5px solid;">Carrito</h2>
     </div>
 </div>

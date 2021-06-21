@@ -14,19 +14,12 @@
 
 <body>
 
-    <?php
-    session_start();
-    ?>
 
-    <?php
-    if (isset($_POST['usuario'])) {
-        echo $_POST['usuario'];
-        $_SESSION['usuario'] = $_POST['usuario'];
-    }
-    ?>
+
+
 
     <div class="container">
-        <div class="row text-center">
+        <div class="row text-center" style="border-bottom: red 5px dashed;">
             <div class="col-md-12">
                 <h1>Bienvenido al inicio ArtiMax</h1>
             </div>
@@ -34,69 +27,74 @@
     </div>
 
     <div class="container">
-        <div class="row login-register-page">
-            <div class="col-md-6">
+        <div class="row login-register-page" style="margin-top: 10em;">
+            <div class="col-md-5" style="border-style: solid;">
                 <form action="?controlador=User&accion=iniciar_sesion" method="post">
                     <div class="row">
-                        <div class="col-md-12 login-form-header">
-                            <p class="login-form-font-header">Login <span>ArtiMaxCR</span>
-                            </p>
+                        <div class="col-md-12 login-form-header" style="border-bottom: red 5px solid;">
+                            <b class="login-form-font-header">Iniciar sesión <span></span>
+                            </b>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 login-row">
+                        <div class="col-md-6 login-row" style="margin-top: 1em;">
                             <input name="usuario" id="usuario" type="usuario" placeholder="Usuario" required />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 login-row">
+                        <div class="col-sm-2 login-row" style="margin-top: 1em;">
                             <input name="contrasennia" id="contrasennia" type="contrasennia" placeholder="Contraseña" required />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 login-row">
+                        <div class="col-md-6 login-row" style="margin-top: 1em;">
                             <button type="summit" class="btn btn-primary">Entrar</button>
+                        </div>
+                        <div class="col-md-6 text-center">
+                        <img src="/public/img/login.png" height="50px" width="50px" alt="login">
                         </div>
                     </div>
                 </form>
             </div>
 
-            <div class="col-md-6">
+            <div class="col-md-6 offset-sm-1" style="border-style: solid;">
 
                 <form method="post">
 
                     <div class="row">
-                        <div class=" col-md-12 register-form-header">
-                            <p class="register-form-font-header">Registro<span>ArtiMax</span>
-                            </p>
+                        <div class=" col-md-12 register-form-header" style="border-bottom: red 5px solid;">
+                            <b class="register-form-font-header">Registrarse<span></span>
+                            </b>
                         </div>
                     </div>
                     <!-- usuario -->
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div class="row" style="margin-top: 1em;">
+                        <div class=" col-md-4">
                             <input type="usuario" id="usuario2" name="usuario" placeholder="Nombre de usuario" required>
                         </div>
-                    </div>
-                    <!-- edad -->
-                    <div class="row">
-                        <div class="col-md-12">
+                        <!-- edad -->
+                        <div class="col-md-3">
                             <input type="edad" id="edad" name="edad" placeholder="Edad" required>
                         </div>
                     </div>
                     <!-- direccion -->
                     <div class="row">
-                        <div class="col-md-12">
-                            <textarea name="direccion" id="direccion" cols="22.5" style="resize: none;" placeholder="Direccion principal" rows="4"></textarea>
+                        <div class="col-md-3 offset-md-2" style="margin-top: 1em;">
+                            <textarea name="direccion" id="direccion" cols="20.5" style="resize: none;" placeholder="Direccion principal" rows="3"></textarea>
+                        </div>
+                        <div class="col-md-3 text-center offset-md-4">
+                        <img src="/public/img/register.png" height="70px" width="70px" alt="login">
                         </div>
                     </div>
-                    <div class="row"></div>
-                    <div class="col-md-12">
-                        <input type="contrasennia" id="contrasenniaR" name="contrasenniaR" placeholder="Contraseña">
-                    </div>
-                    <!-- genero -->
                     <div class="row">
-                        <div class="col-md-12">
-                            <select name="genero" id="genero">
+                        <div class="col-md-4">
+                            <input type="contrasennia" id="contrasenniaR" name="contrasenniaR" placeholder="Contraseña">
+                        </div>
+
+                        <!-- genero -->
+
+                        <div class="col-md-3">
+                            <select name="genero" id="genero" style="width: 12em;">
                                 <option value="masculino">Masculino</option>
                                 <option value="femenino">Femenino</option>
                                 <option value="otro">Otro</option>
@@ -105,7 +103,7 @@
                     </div>
                     <!-- boton registrar -->
                     <div class="row">
-                        <div class="col-md-12 register-row">
+                        <div class="col-md-12 offset-md-3 register-row" style="margin-top: 1em; margin-bottom: 1em;">
                             <button onclick="registrar_usuario($('#usuario2').val(),2,$('#edad').val(),
                             $('#direccion').val(),$('#genero').val(),$('#contrasenniaR').val()); return false;" class="btn btn-primary">Registrar</button>
                         </div>

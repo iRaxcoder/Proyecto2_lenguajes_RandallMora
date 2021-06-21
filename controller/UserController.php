@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 
 class UserController
 {
@@ -11,6 +12,7 @@ class UserController
 
     public function iniciar_sesion()
     {
+        $_SESSION['usuario'] = $_POST['usuario'];
         require './model/UserModel.php';
         $user = new UserModel();
         $respuesta = $user->iniciar_sesion($_POST['usuario'], $_POST['contrasennia']);
@@ -26,6 +28,7 @@ class UserController
                 require './model/ArticuloModel.php';
                 $articulo = new ArticuloModel();
                 $data['categorias'] = $articulo->mostrar_categorias();
+                $data['promos'] = $articulo->obtener_promociones();
                 $this->view->show("PrincipalVentasView.php", $data);
                 break;
         }

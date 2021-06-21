@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -19,45 +17,9 @@ session_start();
 <body>
 
   <!-- header -->
-  <div class="jumbotron">
+  <div class="jumbotron text-center">
     <h1>Venta de articulos ArtiMax CR</h1>
     <p>Venta de articulos de primera calidad. Productos nacionales e internacionales con los mejores precios</p>
-  </div>
-
-  <!-- nav -->
-
-  <div class="row">
-    <div class="col-md-12">
-      <nav class="navbar  navbar-expand-lg navbar-light bg-light ">
-        <a class="navbar-brand" href="#">
-          <?php
-
-          if (isset($_SESSION['usuario'])) {
-            echo 'Bienvenid@ ' . $_SESSION["usuario"];
-          } else {
-            echo 'ArtiMax CR';
-          }
-
-          ?>
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarText">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="index.php">Inicio <span class="sr-only"></span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Contacto</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Sobre nosotros</a>
-            </li>
-          </ul>
-        </div>
-      </nav>
-    </div>
   </div>
 
 

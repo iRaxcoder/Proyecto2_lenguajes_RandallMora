@@ -9,6 +9,21 @@ class ArticuloController
 
     public function registrar_articulo()
     {
+        $carpetaDestino = "./public/img/";
+        if (isset($_FILES["imagen"])) {
+            if (file_exists($carpetaDestino) || @mkdir($carpetaDestino)) {
+                $origen = $_FILES["imagen"]["tmp_name"];
+                $destino = $carpetaDestino . $_FILES["imagen"]["name"];
+
+                if (@move_uploaded_file($origen, $destino)) {
+                    //echo "<br>" . $_FILES["imagen"]["name"] . " movido correctamente";
+                } else {
+                    // echo "<br>No se ha podido mover el archivo: " . $_FILES["imagen"]["name"];
+                }
+            } else {
+                echo "<br>No existe el directorio";
+            }
+        }
         require './model/ArticuloModel.php';
         $articulo = new ArticuloModel();
 
@@ -44,5 +59,15 @@ class ArticuloController
             $data['articulos'] = $articulo->obtener_articulos();
             $this->view->show("PromocionArticuloView.php", $data);
         }
+    }
+
+    public function obtener_articulos()
+    {
+        require './model/ArticuloModel.php';
+        $articulo = new ArticuloModel();
+
+        $data['articulos'] = $articulo->obtener_articulos_bd();
+
+        echo json_encode($data);
     }
 }
