@@ -70,4 +70,23 @@ class ArticuloController
 
         echo json_encode($data);
     }
+
+    public function obtener_articulos_nombre()
+    {
+        require './model/ArticuloModel.php';
+        $articulo = new ArticuloModel();
+        $data['articulos'] = $articulo->obtener_articulos_nombre($_POST['nombre']);
+        $data['promos'] = $articulo->obtener_promos_nombre($_POST['nombre']);
+        echo json_encode($data);
+    }
+
+
+    public function obtener_articulos_categoria()
+    {
+        require './model/ArticuloModel.php';
+        $articulo = new ArticuloModel();
+        $data['articulos'] = $articulo->obtener_articulos_categoria($_POST['categoria']);
+        $data['promos'] = $articulo->obtener_promos_categoria($_POST['categoria']);
+        echo json_encode($data);
+    }
 }

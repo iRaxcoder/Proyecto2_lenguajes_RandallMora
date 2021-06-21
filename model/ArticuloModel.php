@@ -63,4 +63,41 @@ class ArticuloModel
         $consulta->closeCursor();
         return $resultado;
     }
+
+    public function obtener_articulos_nombre($nombre)
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_articulo_nombre(:nombre)');
+        $consulta->bindParam(':nombre', $nombre);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+    public function obtener_promos_nombre($nombre)
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_promos_nombre(:nombre)');
+        $consulta->bindParam(':nombre', $nombre);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+    public function obtener_articulos_categoria($categoria)
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_articulos_categoria(:categoria)');
+        $consulta->bindParam(':categoria', $categoria);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+    public function obtener_promos_categoria($categoria)
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_promos_categoria(:categoria)');
+        $consulta->bindParam(':categoria', $categoria);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
 }

@@ -8,7 +8,7 @@ function mostrar_articulos(opcion) {
     };
     $.ajax({
         data: parametros,
-        url: '?controlador=articulo&accion=obtener_articulos',
+        url: '?controlador=Articulo&accion=obtener_articulos',
         dataType: "json",
         type: 'post',
         beforeSend: function () {
@@ -18,33 +18,170 @@ function mostrar_articulos(opcion) {
             var titulo = document.querySelector(".ofrecimiento");
             var contenido = document.getElementById("rowArticulos");
 
-            if (opcion == ARTICULO) {
+            titulo.innerHTML = "<p>Articulos</p";
+            contenido.innerHTML = "";
+            //
+            $.each(response['articulos'], function (key, value) {
 
-                titulo.innerHTML = "<p>Articulos</p";
-                contenido.innerHTML="";
-                //
-                $.each(response['articulos'], function (key, value) {
+                contenido.innerHTML +=
+                    " <div class='card col-md-1 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
+                    "<div class='card-body'>" +
+                    "<h5 class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
+                    " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
+                    "<p>Precio: $" + value['PRECIO'] + "</p>" +
+                    "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
+                    "<a href='#' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "</a>" +
+                    "<a href='#' class='btn btn-primary'>" +
+                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "</a>" +
+                    " </div>" +
+                    "</div>";
+            });
 
-                    contenido.innerHTML+=
-                        " <div class='card col-md-1 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
-                        " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
-                        "<div class='card-body'>" +
-                        "<h5 class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
-                        " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
-                        "<p>Precio: $" + value['PRECIO'] + "</p>" +
-                        "<a href='#' style='margin: 1em;' class='btn btn-primary'>" +
-                        "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
-                        "</a>" +
-                        "<a href='#' class='btn btn-primary'>" +
-                        "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
-                        "</a>" +
-                        " </div>" +
-                        "</div>";
-                });
 
-            } else if (opcion == PROMOCION) {
-                titulo.innerHTML = "<p>Promociones</p";
-            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+
+    });
+    return false;
+}
+
+function buscar_por_nombre(nombre) {
+    var contador = 0;
+    var parametros = {
+        "nombre": nombre
+    };
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Articulo&accion=obtener_articulos_nombre',
+        dataType: "json",
+        type: 'post',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+            var titulo = document.querySelector(".ofrecimiento");
+            var contenido = document.getElementById("rowArticulos");
+            contenido.innerHTML = "";
+            //
+            $.each(response['articulos'], function (key, value) {
+
+                contenido.innerHTML +=
+                    " <div class='card col-md-1 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
+                    "<div class='card-body'>" +
+                    "<h5 class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
+                    " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
+                    "<p>Precio: $" + value['PRECIO'] + "</p>" +
+                    "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
+                    "<a href='#' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "</a>" +
+                    "<a href='#' class='btn btn-primary'>" +
+                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "</a>" +
+                    " </div>" +
+                    "</div>";
+                contador += 1;
+            });
+            $.each(response['promos'], function (key, value) {
+
+                contenido.innerHTML +=
+                    " <div class='card col-md-1 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['nombre_imagen'] + "'" + " alt='" + value['nombre_imagen'] + "'>" +
+                    "<div class='card-body'>" +
+                    "<h5 class='card-title'>" + value['nombre_articulo'] + "</h5>" +
+                    " <p class='card-text'>" + value['descripcion'] + "</p>" +
+                    "<p>$<del>$" + value['precio_regular'] + "</del>$" + value['PRECIO_REBAJA'] + "</p>" +
+                    "<p>válido hasta el: " + value['fecha_final'] + " </p>" +
+                    "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
+                    "<a href='#' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "</a>" +
+                    "<a href='#' class='btn btn-primary'>" +
+                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "</a>" +
+                    " </div>" +
+                    "</div>";
+                contador += 1;
+            });
+            titulo.innerHTML = "<p>" + contador + " resultado(s) de búsqueda con " + '"' + nombre + '"' + "</p";
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+
+    });
+    return false;
+}
+
+function buscar_por_categoria(categoria) {
+    var contador = 0;
+    var categoria2 = categoria.dataset.value;
+        var parametros = {
+        "categoria": categoria2
+    };
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Articulo&accion=obtener_articulos_categoria',
+        dataType: "json",
+        type: 'post',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+            var titulo = document.querySelector(".ofrecimiento");
+            var contenido = document.getElementById("rowArticulos");
+            contenido.innerHTML = "";
+            //
+            $.each(response['articulos'], function (key, value) {
+
+                contenido.innerHTML +=
+                    " <div class='card col-md-1 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
+                    "<div class='card-body'>" +
+                    "<h5 class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
+                    " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
+                    "<p>Precio: $" + value['PRECIO'] + "</p>" +
+                    "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
+                    "<a href='#' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "</a>" +
+                    "<a href='#' class='btn btn-primary'>" +
+                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "</a>" +
+                    " </div>" +
+                    "</div>";
+                contador += 1;
+            });
+            $.each(response['promos'], function (key, value) {
+
+                contenido.innerHTML +=
+                    " <div class='card col-md-1 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['nombre_imagen'] + "'" + " alt='" + value['nombre_imagen'] + "'>" +
+                    "<div class='card-body'>" +
+                    "<h5 class='card-title'>" + value['nombre_articulo'] + "</h5>" +
+                    " <p class='card-text'>" + value['descripcion'] + "</p>" +
+                    "<p>$<del>$" + value['precio_regular'] + "</del>$" + value['PRECIO_REBAJA'] + "</p>" +
+                    "<p>válido hasta el: " + value['fecha_final'] + " </p>" +
+                    "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
+                    "<a href='#' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "</a>" +
+                    "<a href='#' class='btn btn-primary'>" +
+                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "</a>" +
+                    " </div>" +
+                    "</div>";
+                contador += 1;
+            });
+            titulo.innerHTML = "<p>" + contador + " resultado(s) de búsqueda por categoría " + '"' + categoria2 + '"' + "</p";
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(textStatus);

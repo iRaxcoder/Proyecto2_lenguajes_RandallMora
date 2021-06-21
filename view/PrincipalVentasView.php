@@ -42,7 +42,7 @@ include_once './public/header.php';
                         <a href='javascript:;' onclick="mostrar_articulos(1); return false;" class="nav-link"> Articulos <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Promociones</a>
+                        <a href="?controlador=User&accion=mostrar_principal_ventas" class="nav-link">Promociones</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link">Sobre nosotros</a>
@@ -59,19 +59,17 @@ include_once './public/header.php';
         <nav class="navbar">
             <ul class="nav navbar-nav">
                 <form method="post" class=" form-inline" style="justify-content: right;">
-                    <input class="form-control mr-sm-2" style="justify-content: right; margin-bottom: 1em; border-bottom: crimson 5px solid;" type="search" placeholder="Articulo" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar articulo</button>
+                    <input id="nombreArticulo" class="form-control mr-sm-2" style="justify-content: right; margin-bottom: 1em; border-bottom: crimson 5px solid;" type="search" placeholder="Articulo" aria-label="Search">
+                    <button onclick="buscar_por_nombre($('#nombreArticulo').val());return false;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar articulo</button>
                 </form>
                 <h5 style="margin-top: 1em;">Categorias</h3>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#"> Ver todos </a>
-                    </li>
                     <?php
                     if (isset($vars['categorias'])) {
                         foreach ($vars['categorias'] as $item) {
                     ?>
                             <li class="nav-item">
-                                <a class="nav-link" href="#"> <?php echo $item['nombre_categoria']  ?> </a>
+                                <a data-value="<?php echo $item['nombre_categoria'] ?>" id=" <?php echo $item['nombre_categoria'] ?>" class="nav-link" href="javascript:;" onclick="buscar_por_categoria(this);return false;">
+                                    <?php echo $item['nombre_categoria'] ?> </a>
                             </li>
                     <?php
                         }
@@ -94,6 +92,7 @@ include_once './public/header.php';
                             <p class='card-text'><?php echo $item['descripcion'] ?></p>
                             <p><del>$<?php echo $item['precio_regular'] ?></del>$<?php echo $item['PRECIO_REBAJA'] ?> </p>
                             <p>válido hasta el: <?php echo $item['fecha_final'] ?> </p>
+                            <input id="numero" type="number" min="1" style="width: 50px;" value="1">
                             <a href='#' class='btn btn-primary' style="margin:1em;">
                                 <img height='25px' src='/public/img/carrito.png' alt='carrito'>
                             </a>

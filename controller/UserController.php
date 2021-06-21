@@ -25,13 +25,18 @@ class UserController
                 $this->view->show("headerAdminView.php", null);
                 break;
             case 2:
-                require './model/ArticuloModel.php';
-                $articulo = new ArticuloModel();
-                $data['categorias'] = $articulo->mostrar_categorias();
-                $data['promos'] = $articulo->obtener_promociones();
-                $this->view->show("PrincipalVentasView.php", $data);
+                $this->mostrar_principal_ventas();
                 break;
         }
+    }
+
+    public function mostrar_principal_ventas()
+    {
+        require './model/ArticuloModel.php';
+        $articulo = new ArticuloModel();
+        $data['categorias'] = $articulo->mostrar_categorias();
+        $data['promos'] = $articulo->obtener_promociones();
+        $this->view->show("PrincipalVentasView.php", $data);
     }
 
     public function registrar_usuario()
