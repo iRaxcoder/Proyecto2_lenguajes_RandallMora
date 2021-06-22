@@ -33,7 +33,10 @@
                     <a class="nav-link" href="?controlador=Admin&accion=mostrar_registro_articulo_view">Registrar articulo <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="?controlador=Admin&accion=mostrar_promociones_view">Gestion de promociones</a>
+                    <a class="nav-link" href="?controlador=Admin&accion=mostrar_gestion_articulos_view">Gestión de articulos</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="?controlador=Admin&accion=mostrar_promociones_view">Gestión de promociones</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="?controlador=Admin&accion=mostrar_gestion_usuario_admin">Gestion usuario admin</a>

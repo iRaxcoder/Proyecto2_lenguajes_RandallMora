@@ -34,5 +34,12 @@ class AdminController
         $this->view->show("RegistrarAdminView.php", null);
     }
 
-    
+    public function mostrar_gestion_articulos_view()
+    {
+        require './model/ArticuloModel.php';
+        $items = new ArticuloModel();
+        $data['articulos'] = $items->obtener_articulos();
+        $data['categorias'] = $items->mostrar_categorias();
+        $this->view->show("GestionArticulosView.php", $data);
+    }
 }

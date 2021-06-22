@@ -89,4 +89,8 @@ class ArticuloController
         $data['promos'] = $articulo->obtener_promos_categoria($_POST['categoria']);
         echo json_encode($data);
     }
+
+    public function mostrar_gestion_articulos_view(){
+        
+    }
 }
