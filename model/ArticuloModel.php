@@ -100,4 +100,41 @@ class ArticuloModel
         $consulta->closeCursor();
         return $resultado;
     }
+
+    public function modificar_articulo($nombre_articulo, $precio, $descripcion, $categoria, $nombre_imagen, $id)
+    {
+        $consulta = $this->db->prepare('call sp_modificar_articulo(:p_nombre,:p_precio,:p_descripcion'
+            . ',:p_categoria,:p_imagen,:p_id)');
+
+        $consulta->bindParam(':p_nombre', $nombre_articulo);
+        $consulta->bindParam(':p_precio', $precio);
+        $consulta->bindParam(':p_descripcion', $descripcion);
+        $consulta->bindParam(':p_categoria', $categoria);
+        $consulta->bindParam(':p_imagen', $nombre_imagen);
+        $consulta->bindParam(':p_id', $id);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
+    public function borrar_articulo($id)
+    {
+        $consulta = $this->db->prepare('call sp_borrar_articulo(:id)');
+        $consulta->bindParam(':id', $id);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
+    public function obtener_articulos_id($id)
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_articulos_id(:id)');
+        $consulta->bindParam(':id', $id);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
 }

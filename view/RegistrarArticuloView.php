@@ -42,7 +42,7 @@ include_once './view/headerAdminView.php';
             <!-- precio -->
             <div class="row">
                 <div class="col-md-12">
-                    <input type="precio" id="precio" name="precio" placeholder="precio" required>
+                    <input type="number" min="1" step="any" id="precio" name="precio" placeholder="precio" required>
                 </div>
             </div>
             <!-- descripcion -->

@@ -36,10 +36,54 @@ class AdminController
 
     public function mostrar_gestion_articulos_view()
     {
-        require './model/ArticuloModel.php';
+        require_once './model/ArticuloModel.php';
         $items = new ArticuloModel();
         $data['articulos'] = $items->obtener_articulos();
         $data['categorias'] = $items->mostrar_categorias();
         $this->view->show("GestionArticulosView.php", $data);
+    }
+
+    public function modificar_articulo()
+    {
+        require_once './model/ArticuloModel.php';
+        $items = new ArticuloModel();
+
+        if (isset($_FILES['imagen2']) && $_FILES['imagen2']['error'] != 4) {
+            $items->modificar_articulo($_POST['nombreArticulo'], $_POST['precio'], $_POST['descripcion'], $_POST['categoria'], $_FILES['imagen2']['name'], $_POST['id_articulo']);
+        } else {
+            $items->modificar_articulo($_POST['nombreArticulo'], $_POST['precio'], $_POST['descripcion'], $_POST['categoria'], $_POST['imagenAct'], $_POST['id_articulo']);
+        }
+        $this->mostrar_gestion_articulos_view();
+    }
+
+    public function borrar_articulo()
+    {
+        require_once './model/ArticuloModel.php';
+        $items = new ArticuloModel();
+        $items->borrar_articulo($_POST['id']);
+        $data['articulos'] = $items->obtener_articulos();
+        echo json_encode($data);
+    }
+
+    public function obtener_articulo_por_nombre()
+    {
+        require_once './model/ArticuloModel.php';
+        $items = new ArticuloModel();
+        $data['resultado'] = $items->obtener_articulos_nombre($_POST['tipo']);
+        echo json_encode($data);
+    }
+    public function obtener_articulo_por_id()
+    {
+        require_once './model/ArticuloModel.php';
+        $items = new ArticuloModel();
+        $data['resultado'] = $items->obtener_articulos_id($_POST['tipo']);
+        echo json_encode($data);
+    }
+    public function obtener_articulo_por_categoria()
+    {
+        require_once './model/ArticuloModel.php';
+        $items = new ArticuloModel();
+        $data['resultado'] = $items->obtener_articulos_categoria($_POST['tipo']);
+        echo json_encode($data);
     }
 }
