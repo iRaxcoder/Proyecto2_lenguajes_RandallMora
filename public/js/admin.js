@@ -71,26 +71,32 @@ function borrar_articulo(accion) {
 }
 
 function buscar_por_filtro(buscar) {
-    var filtro = buscar.split("-");
     var tablaArt = $('#tablaArt');
     var url_temp = "?controlador=Admin&accion=obtener_articulo_por_nombre";
+    var param = buscar;
+    var filtro = [];
+    if (buscar.charAt(1) == '-') {
+        filtro = buscar.split("-");
 
-    switch (filtro[0]) {
-        case 'c':
-            url_temp = "?controlador=Admin&accion=obtener_articulo_por_categoria";
-            break;
+        switch (filtro[0]) {
+            case 'c':
+                url_temp = "?controlador=Admin&accion=obtener_articulo_por_categoria";
+                break;
 
-        case 'i':
-            url_temp = "?controlador=Admin&accion=obtener_articulo_por_id";
-            break;
+            case 'i':
+                url_temp = "?controlador=Admin&accion=obtener_articulo_por_id";
+                break;
 
-        case 'n':
-            url_temp = "?controlador=Admin&accion=obtener_articulo_por_nombre";
-            break;
+            case 'n':
+                url_temp = "?controlador=Admin&accion=obtener_articulo_por_nombre";
+                break;
+        }
+        param = filtro[1];
     }
 
+
     var parametros = {
-        "tipo": filtro[1]
+        "tipo": param
     };
     $.ajax({
         data: parametros,
