@@ -111,7 +111,15 @@ include_once './public/header.php';
             ?>
         </div>
     </div>
-    <div class="text-center clear-fix col-md-2 offset-md-1 bg-light">
+    <aside class="text-center clear-fix col-md-2 offset-md-1 bg-light">
         <h2 style="border-bottom: red 5px solid;">Carrito</h2>
-    </div>
+        <ul id="carritoC" class="list-group"></ul>
+        <p id="total" class="text-right">Total: <span id="total"></span>&dollar;</p>
+        <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+
+    </aside>
 </div>
+
+<script>
+    window.onload = principal()
+</script>
