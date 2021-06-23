@@ -42,8 +42,8 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm-2 login-row" style="margin-top: 1em;">
-                            <input name="contrasennia" id="contrasennia" type="contrasennia" placeholder="Contraseña" required />
+                        <div class="col-sm-2 login-row" style="margin-top: 1em; display:flex;">
+                            <input name="contrasennia" id="contrasennia" type="password" placeholder="Contraseña" required />
                         </div>
                     </div>
                     <div class="row">
@@ -51,7 +51,7 @@
                             <button type="summit" class="btn btn-primary">Entrar</button>
                         </div>
                         <div class="col-md-6 text-center">
-                        <img src="/public/img/login.png" height="50px" width="50px" alt="login">
+                            <img src="/public/img/login.png" height="50px" width="50px" alt="login">
                         </div>
                     </div>
                 </form>
@@ -83,17 +83,18 @@
                             <textarea name="direccion" id="direccion" cols="20.5" style="resize: none;" placeholder="Direccion principal" rows="3"></textarea>
                         </div>
                         <div class="col-md-3 text-center offset-md-4">
-                        <img src="/public/img/register.png" height="70px" width="70px" alt="login">
+                            <img src="/public/img/register.png" height="70px" width="70px" alt="login">
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-4">
-                            <input type="contrasennia" id="contrasenniaR" name="contrasenniaR" placeholder="Contraseña">
+                        <div class="col-md-4" style="display: flex;">
+                            <input type="password" id="contrasenniaR" name="contrasenniaR" placeholder="Contraseña">
+
                         </div>
 
                         <!-- genero -->
 
-                        <div class="col-md-3">
+                        <div class="col-md-3 offset-md-1">
                             <select name="genero" id="genero" style="width: 12em;">
                                 <option value="masculino">Masculino</option>
                                 <option value="femenino">Femenino</option>

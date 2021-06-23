@@ -29,13 +29,13 @@ function mostrar_articulos(opcion) {
                     "<div class='card-body'>" +
                     "<h5 class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
-                    "<p>Precio: $" + value['PRECIO'] + "</p>" +
+                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a href='#' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<a href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='#' class='btn btn-primary'>" +
-                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "<img height='25px' src='/public/img/comprar.png' alt='comprar directo'>" +
                     "</a>" +
                     " </div>" +
                     "</div>";
@@ -77,9 +77,9 @@ function buscar_por_nombre(nombre) {
                     "<div class='card-body'>" +
                     "<h5 class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
-                    "<p>Precio: $" + value['PRECIO'] + "</p>" +
+                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a href='#' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<a href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='#' class='btn btn-primary'>" +
@@ -97,10 +97,10 @@ function buscar_por_nombre(nombre) {
                     "<div class='card-body'>" +
                     "<h5 class='card-title'>" + value['nombre_articulo'] + "</h5>" +
                     " <p class='card-text'>" + value['descripcion'] + "</p>" +
-                    "<p>$<del>$" + value['precio_regular'] + "</del>$" + value['PRECIO_REBAJA'] + "</p>" +
+                    "<p id='precio'>$<del>$" + value['precio_regular'] + "</del><span>$</span>" + value['PRECIO_REBAJA'] + "</p>" +
                     "<p>válido hasta el: " + value['fecha_final'] + " </p>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a href='#' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<a href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='#' class='btn btn-primary'>" +
@@ -124,7 +124,7 @@ function buscar_por_nombre(nombre) {
 function buscar_por_categoria(categoria) {
     var contador = 0;
     var categoria2 = categoria.dataset.value;
-        var parametros = {
+    var parametros = {
         "categoria": categoria2
     };
     $.ajax({
@@ -148,9 +148,9 @@ function buscar_por_categoria(categoria) {
                     "<div class='card-body'>" +
                     "<h5 class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
-                    "<p>Precio: $" + value['PRECIO'] + "</p>" +
+                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a href='#' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<a href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='#' class='btn btn-primary'>" +
@@ -168,14 +168,14 @@ function buscar_por_categoria(categoria) {
                     "<div class='card-body'>" +
                     "<h5 class='card-title'>" + value['nombre_articulo'] + "</h5>" +
                     " <p class='card-text'>" + value['descripcion'] + "</p>" +
-                    "<p>$<del>$" + value['precio_regular'] + "</del>$" + value['PRECIO_REBAJA'] + "</p>" +
+                    "<p id='precio'>$<del>$" + value['precio_regular'] + "</del><span>$</span>" + value['PRECIO_REBAJA'] + "</p>" +
                     "<p>válido hasta el: " + value['fecha_final'] + " </p>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a href='#' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<a href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
-                    "<a href='#' class='btn btn-primary'>" +
-                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "<a href='javascript:;' class='btn btn-primary'>" +
+                    "<img height='25px' src='/public/img/comprar.png' alt='comprar directo'>" +
                     "</a>" +
                     " </div>" +
                     "</div>";

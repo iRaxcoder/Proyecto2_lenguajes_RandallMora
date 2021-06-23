@@ -11,6 +11,7 @@ include_once './public/header.php';
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script src="/public/js/articulo.js"></script>
+    <script src="/public/js/carrito_compra.js"></script>
 </head>
 
 <body>
@@ -90,14 +91,17 @@ include_once './public/header.php';
                         <div class='card-body'>
                             <h5 class='card-title'><?php echo $item['nombre_articulo'] ?></h5>
                             <p class='card-text'><?php echo $item['descripcion'] ?></p>
-                            <p><del>$<?php echo $item['precio_regular'] ?></del>$<?php echo $item['PRECIO_REBAJA'] ?> </p>
+                            <p id="precio">
+                                <del>$<?php echo $item['precio_regular'] ?></del>
+                                <span>$</span><?php echo $item['PRECIO_REBAJA'] ?>
+                            </p>
                             <p>válido hasta el: <?php echo $item['fecha_final'] ?> </p>
                             <input id="numero" type="number" min="1" style="width: 50px;" value="1">
-                            <a href='#' class='btn btn-primary' style="margin:1em;">
+                            <a id="<?php echo $item['id_articulo'] ?>" href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>
                                 <img height='25px' src='/public/img/carrito.png' alt='carrito'>
                             </a>
                             <a href='#' class='btn btn-primary'>
-                                <img height='25px' src='/public/img/comprar.png' alt='carrito'>
+                                <img height='25px' src='/public/img/comprar.png' alt='comprar directo'>
                             </a>
                         </div>
                     </div>
