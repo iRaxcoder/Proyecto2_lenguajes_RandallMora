@@ -14,6 +14,7 @@ include_once './public/header.php';
     <script src="/public/js/carrito_compra.js"></script>
 </head>
 
+
 <body>
 
 </body>
@@ -26,14 +27,14 @@ include_once './public/header.php';
             <a class="navbar-brand">
                 <?php
                 if (isset($_SESSION['usuario'])) {
-                    echo "Bienvenid@ ".$_SESSION["usuario"];
+                    echo "Bienvenid@ " . $_SESSION["usuario"];
                 } else {
                     echo 'ArtiMax CR';
                 }
                 ?>
                 <p style="display: none;" id="n_usuario"><?php echo $_SESSION["usuario"]; ?></p>
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse " id="navbarText">
@@ -45,7 +46,10 @@ include_once './public/header.php';
                         <a href="?controlador=User&accion=mostrar_principal_ventas" class="nav-link">Promociones</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Sobre nosotros</a>
+                        <a href="javascript:;" onclick="mostrar_favoritos();" class="nav-link">Favoritos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/index.php" class="nav-link">Cerrar sesión</a>
                     </li>
                 </ul>
             </div>
@@ -54,7 +58,7 @@ include_once './public/header.php';
 </div>
 
 
-<div class=”row” style="margin: 1em; align-items: stretch; display:flex;">
+<div class='row' style="margin-top: 1em; margin-bottom: 1em;">
     <div class="col-md-2 bg-light">
         <nav class="navbar">
             <ul class="nav navbar-nav">
@@ -78,15 +82,15 @@ include_once './public/header.php';
             </ul>
         </nav>
     </div>
-    <div class=" text-center clear-fix col-md-7 ">
+    <div class=" text-center col-md-6 ">
         <h2 class="ofrecimiento" style="border-bottom: red 5px solid; position: relative; left: 2em;">Promociones</h2>
         <div class="row articulosOF" id="rowArticulos">
             <?php
             if (isset($vars['promos'])) {
                 foreach ($vars['promos'] as $item) {
             ?>
-                    <div class='card col-md-1 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>
-                        <img class='card-img-top' height='200px' width='200' src='/public/img/<?php echo $item['nombre_imagen'] ?>' alt='Card image cap'>
+                    <div class='card col-md-5 offset-md-1' style='width: 18rem; margin-bottom: 1em;'>
+                        <img class='card-img-top' height='200px' width='200px' src='/public/img/<?php echo $item['nombre_imagen'] ?>' alt='Card image cap'>
                         <div class='card-body'>
                             <h5 id="nombre_articulo" class='card-title'><?php echo $item['nombre_articulo'] ?></h5>
                             <p class='card-text'><?php echo $item['descripcion'] ?></p>
@@ -95,6 +99,7 @@ include_once './public/header.php';
                                 <span>$</span><?php echo $item['PRECIO_REBAJA'] ?>
                             </p>
                             <p>válido hasta el: <?php echo $item['fecha_final'] ?> </p>
+                            <a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>
                             <input id="numero" type="number" min="1" style="width: 50px;" value="1">
                             <a id="<?php echo $item['id_articulo'] ?>" href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>
                                 <img height='25px' src='/public/img/carrito.png' alt='carrito'>
@@ -110,19 +115,47 @@ include_once './public/header.php';
             ?>
         </div>
     </div>
-    <aside class="text-center clear-fix col-md-2 offset-md-1 bg-light">
+    <aside class="text-center clear-fix col-md-3 offset-md-1 bg-light">
         <h2 style="border-bottom: red 5px solid;">Carrito</h2>
         <ul id="carritoC" class="list-group"></ul>
-        <p id="total" class="text-right">Total: <span id="total"></span>&dollar;</p>
+        <p id="total" class="text-left">Total: <span id="Total"></span>&dollar;</p>
         <button onclick="vaciar_carrito();" id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Verificar compra</button>
     </aside>
 </div>
+
+<!-- Modal -->
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Verificar compra</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" class="close" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-primary">Confirmar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
+<?php
+include_once './public/footer.php';
+?>
+
+
 
 <script src="/public/js/carrito_compra.js"></script>
 <script>
     window.onload = principal();
-
-    
 </script>
-
-

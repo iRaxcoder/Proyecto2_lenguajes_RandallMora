@@ -18,7 +18,7 @@
 
   <!-- header -->
   <div class="jumbotron text-center">
-    <h1>Venta de articulos ArtiMax CR</h1>
+    <h1>Articulos ArtiMax CR</h1>
     <p>Venta de articulos de primera calidad. Productos nacionales e internacionales con los mejores precios</p>
   </div>
 

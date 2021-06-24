@@ -2,6 +2,7 @@ var carrito = [];
 var total;
 var DOMtotal;
 var DOMcarrito;
+var DOMfavorito;
 var usuario;
 
 function principal() {
@@ -10,6 +11,7 @@ function principal() {
     DOMtotal = document.querySelector('#total');
     DOMcarrito = document.querySelector('#carritoC');
     usuario = document.getElementById("n_usuario").textContent;
+    DOMfavorito = document.getElementById("fav");
     //
     llenar_carrito_bd();
 }
@@ -76,7 +78,7 @@ function sumar_total() { //funciona
         total = total + (parseFloat(item.precio) * parseFloat(item.cantidad));
     });
     // muestra con HTML
-    DOMtotal.textContent = "total: $" + total.toFixed(5);
+    DOMtotal.textContent = "Total: $" + total.toFixed(5);
 }
 
 function agregar_articulo() {
@@ -84,11 +86,12 @@ function agregar_articulo() {
 
     carrito.forEach((item) => {
         const miNodo = document.createElement('li');
-        miNodo.classList.add('list-group-item', 'text-right', 'mx-2');
-        miNodo.textContent = `${item.cantidad} x ${item.nombre} - ${item.precio}$`;
+        miNodo.classList.add('list-group-item', 'text-left', 'mx-1');
+        miNodo.textContent = `${item.cantidad} x ${item.nombre} - ${parseFloat(item.precio).toFixed(2)}$`;
+        miNodo.style.marginbottom = '1em';
         //
         const miBoton = document.createElement('button');
-        miBoton.classList.add('btn', 'btn-danger', 'mx-5');
+        miBoton.classList.add('btn', 'btn-danger', 'mx-4');
         miBoton.textContent = 'X';
         miBoton.width = 2;
         miBoton.height = 2;
@@ -243,3 +246,33 @@ function llenar_carrito_bd() {
 
     return false;
 }
+
+
+function agregar_favorito(ref) {
+    //
+    var nombre_d_articulo = document.getElementById("nombre_articulo").textContent;
+
+    var parametros = {
+        "nombre_usuario": usuario,
+        "n_articulo": nombre_d_articulo
+    };
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Articulo&accion=agregar_favorito',
+        dataType: "text",
+        type: 'post',
+        beforeSend: function () {
+
+        },
+        success: function (response) {},
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+
+    });
+    return false;
+
+
+}
+
+

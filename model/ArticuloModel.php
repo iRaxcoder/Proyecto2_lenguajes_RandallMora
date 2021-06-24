@@ -169,8 +169,30 @@ class ArticuloModel
         return $resultado;
     }
 
-    public function obtener_carrito($usuario){
+    public function obtener_carrito($usuario)
+    {
         $consulta = $this->db->prepare('call sp_mostrar_carrito(:p_usuario)');
+        $consulta->bindParam(':p_usuario', $usuario);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
+    public function agregar_favorito($usuario, $articulo)
+    {
+        $consulta = $this->db->prepare('call sp_agregar_favorito(:p_usuario,:p_articulo)');
+        $consulta->bindParam(':p_usuario', $usuario);
+        $consulta->bindParam(':p_articulo', $articulo);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
+    public function mostrar_favoritos($usuario)
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_favoritos(:p_usuario)');
         $consulta->bindParam(':p_usuario', $usuario);
         $consulta->execute();
         $resultado = $consulta->fetchAll();
