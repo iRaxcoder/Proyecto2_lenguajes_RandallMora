@@ -1,8 +1,8 @@
-let carrito;
-let total;
-let DOMtotal;
-let DOMcarrito;
-let usuario;
+var carrito = [];
+var total;
+var DOMtotal;
+var DOMcarrito;
+var usuario;
 
 function principal() {
     carrito = [];
@@ -10,9 +10,12 @@ function principal() {
     DOMtotal = document.querySelector('#total');
     DOMcarrito = document.querySelector('#carritoC');
     usuario = document.getElementById("n_usuario").textContent;
+    //
+    llenar_carrito_bd();
 }
 
 function create_articulo(id, nombre, precio, cantidad) {
+    alert("creado");
     this.id = id;
     this.nombre = nombre;
     this.precio = precio;
@@ -49,7 +52,7 @@ function agregar_al_carrito(boton) {
     }
     var nombre = nodoAux.textContent;
 
-    alert(id_articulo+" "+nombre+ " "+precio+" "+cantidad);
+    alert(id_articulo + " " + nombre + " " + precio + " " + cantidad);
 
     //crea el objeto y hace push
     var articulo = new create_articulo(id_articulo, nombre, precio, cantidad);
@@ -203,5 +206,40 @@ function vaciar_carrito_bd() {
         }
 
     });
+    return false;
+}
+
+
+function llenar_carrito_bd() {
+    var parametros = {
+        "nombre_usuario": usuario,
+    };
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Articulo&accion=mostrar_carrito',
+        dataType: "json",
+        type: 'post',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+            $.each(response['carrito'], function (key, value) {
+                var articuloAux = {
+                    id: value['id_articulo'],
+                    nombre: value['nombre_articulo'],
+                    precio: value['precio'],
+                    cantidad: value['cantidad']
+                };
+                carrito.push(articuloAux);
+            });
+            sumar_total();
+            agregar_articulo();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+
+    });
+
     return false;
 }

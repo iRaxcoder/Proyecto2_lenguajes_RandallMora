@@ -118,6 +118,11 @@ include_once './public/header.php';
     </aside>
 </div>
 
+<script src="/public/js/carrito_compra.js"></script>
 <script>
     window.onload = principal();
+
+    
 </script>
+
+
