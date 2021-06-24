@@ -23,16 +23,15 @@ include_once './public/header.php';
 <div class="row">
     <div class="col-md-12">
         <nav class="navbar navbar-right  navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand">
                 <?php
-
                 if (isset($_SESSION['usuario'])) {
-                    echo 'Bienvenid@ ' . $_SESSION["usuario"];
+                    echo "Bienvenid@ ".$_SESSION["usuario"];
                 } else {
                     echo 'ArtiMax CR';
                 }
-
                 ?>
+                <p style="display: none;" id="n_usuario"><?php echo $_SESSION["usuario"]; ?></p>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -89,7 +88,7 @@ include_once './public/header.php';
                     <div class='card col-md-1 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>
                         <img class='card-img-top' height='200px' width='200' src='/public/img/<?php echo $item['nombre_imagen'] ?>' alt='Card image cap'>
                         <div class='card-body'>
-                            <h5 class='card-title'><?php echo $item['nombre_articulo'] ?></h5>
+                            <h5 id="nombre_articulo" class='card-title'><?php echo $item['nombre_articulo'] ?></h5>
                             <p class='card-text'><?php echo $item['descripcion'] ?></p>
                             <p id="precio">
                                 <del>$<?php echo $item['precio_regular'] ?></del>
@@ -115,11 +114,10 @@ include_once './public/header.php';
         <h2 style="border-bottom: red 5px solid;">Carrito</h2>
         <ul id="carritoC" class="list-group"></ul>
         <p id="total" class="text-right">Total: <span id="total"></span>&dollar;</p>
-        <button id="boton-vaciar" class="btn btn-danger">Vaciar</button>
-
+        <button onclick="vaciar_carrito();" id="boton-vaciar" class="btn btn-danger">Vaciar</button>
     </aside>
 </div>
 
 <script>
-    window.onload = principal()
+    window.onload = principal();
 </script>

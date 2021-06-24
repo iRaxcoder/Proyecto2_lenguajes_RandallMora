@@ -90,7 +90,33 @@ class ArticuloController
         echo json_encode($data);
     }
 
-    public function mostrar_gestion_articulos_view(){
-        
+    public function agregar_al_carrito()
+    {
+        require_once './model/ArticuloModel.php';
+        $articulo = new ArticuloModel();
+        $resultado = $articulo->agregar_al_carrito($_POST['nombre_usuario'], $_POST['id_articulo'], $_POST['cantidad']);
+        echo ("listo");
+    }
+    public function quitar_del_carrito()
+    {
+        require_once './model/ArticuloModel.php';
+        $articulo = new ArticuloModel();
+        $resultado = $articulo->quitar_del_carrito($_POST['nombre_usuario'], $_POST['id_articulo']);
+        echo ("listo");
+    }
+    public function vaciar_carrito()
+    {
+        require_once './model/ArticuloModel.php';
+        $articulo = new ArticuloModel();
+        $resultado = $articulo->vaciar_carrito($_POST['nombre_usuario']);
+        echo ("listo");
+    }
+
+    public function mostrar_carrito()
+    {
+        require_once './model/ArticuloModel.php';
+        $articulo = new ArticuloModel();
+        $resultado['carrito'] = $articulo->obtener_carrito($_POST['nombre_usuario']);
+        echo json_encode($resultado);
     }
 }

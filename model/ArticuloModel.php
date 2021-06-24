@@ -137,4 +137,44 @@ class ArticuloModel
         $consulta->closeCursor();
         return $resultado;
     }
+
+    public function agregar_al_carrito($usuario, $id_articulo, $cantidad)
+    {
+        $consulta = $this->db->prepare('call sp_agregar_carrito(:p_id_articulo,:p_usuario,:p_cantidad)');
+        $consulta->bindParam(':p_id_articulo', $id_articulo);
+        $consulta->bindParam(':p_usuario', $usuario);
+        $consulta->bindParam(':p_cantidad', $cantidad);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+    public function quitar_del_carrito($usuario, $id_articulo)
+    {
+        $consulta = $this->db->prepare('call sp_quitar_carrito(:p_id_articulo,:p_usuario)');
+        $consulta->bindParam(':p_id_articulo', $id_articulo);
+        $consulta->bindParam(':p_usuario', $usuario);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+    public function vaciar_carrito($usuario)
+    {
+        $consulta = $this->db->prepare('call sp_vaciar_carrito(:p_usuario)');
+        $consulta->bindParam(':p_usuario', $usuario);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
+    public function obtener_carrito($usuario){
+        $consulta = $this->db->prepare('call sp_mostrar_carrito(:p_usuario)');
+        $consulta->bindParam(':p_usuario', $usuario);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
 }
