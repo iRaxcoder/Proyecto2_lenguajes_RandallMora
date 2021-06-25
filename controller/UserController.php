@@ -50,4 +50,9 @@ class UserController
             echo "1";
         }
     }
+
+    public function mostrar_metodos_pago_view()
+    {
+        $this->view->show('MetodoPagoView.php', null);
+    }
 }

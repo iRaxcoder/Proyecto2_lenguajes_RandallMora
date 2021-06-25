@@ -49,6 +49,9 @@ include_once './public/header.php';
                         <a href="javascript:;" onclick="mostrar_favoritos();" class="nav-link">Favoritos</a>
                     </li>
                     <li class="nav-item">
+                        <a href="?controlador=User&accion=mostrar_metodos_pago_view" class="nav-link">Métodos de pago</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="/index.php" class="nav-link">Cerrar sesión</a>
                     </li>
                 </ul>
@@ -118,7 +121,7 @@ include_once './public/header.php';
     <aside class="text-center clear-fix col-md-3 offset-md-1 bg-light">
         <h2 style="border-bottom: red 5px solid;">Carrito</h2>
         <ul id="carritoC" class="list-group"></ul>
-        <p id="total" class="text-left">Total: <span id="Total"></span>&dollar;</p>
+        <p id="total" class="text-center">Total: <span id="Total"></span>&dollar;</p>
         <button onclick="vaciar_carrito();" id="boton-vaciar" class="btn btn-danger">Vaciar</button>
         <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Verificar compra</button>
     </aside>
