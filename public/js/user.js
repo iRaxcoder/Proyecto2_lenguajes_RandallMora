@@ -1,5 +1,3 @@
-
-
 function registrar_usuario(usuario, role, edad, direccion, genero, contrasennia) {
     alert(usuario + role + edad + direccion + genero + contrasennia);
     var parametros = {
@@ -35,3 +33,27 @@ function registrar_usuario(usuario, role, edad, direccion, genero, contrasennia)
     return false;
 }
 
+function borrar_metodo(boton) {
+    var id = boton.dataset.id;
+
+    var parametros = {
+        "id": id
+    };
+    $.ajax({
+        data: parametros,
+        url: '?controlador=User&accion=borrar_metodo_pago',
+        dataType: "text",
+        type: 'post',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+            
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+
+    });
+    return false;
+}

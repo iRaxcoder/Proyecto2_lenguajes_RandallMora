@@ -222,7 +222,7 @@ function mostrar_favoritos() {
                     "<h5 id='nombre_articulo' class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
                     "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
-                    "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
+                    "<a id='fav' href='?controlador=User&accion=mostrar_principal_ventas' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
                     "<a id='" + value['ID_ARTICULO'] + "' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +

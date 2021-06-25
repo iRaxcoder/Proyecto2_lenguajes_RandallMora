@@ -51,8 +51,28 @@ class UserController
         }
     }
 
+    public function registrar_metodo_pago()
+    {
+        require_once './model/UserModel.php';
+        $user = new UserModel();
+        $user->registrar_metodo_pago($_POST['numero_tarjeta'], $_POST['fecha_vencimiento'], $_POST['cvv'], $_SESSION['usuario'], $_POST['propietario']);
+        $data['metodos'] = $user->mostrar_metodos_pago($_SESSION['usuario']);
+        $this->view->show('MetodoPagoView.php', $data);
+    }
+
+    public function borrar_metodo_pago()
+    {
+        require_once './model/UserModel.php';
+        $user = new UserModel();
+        $user->borrar_metodo_pago($_SESSION['usuario'], $_POST['id']);
+        echo 'done';
+    }
+
     public function mostrar_metodos_pago_view()
     {
-        $this->view->show('MetodoPagoView.php', null);
+        require_once './model/UserModel.php';
+        $user = new UserModel();
+        $data['metodos'] = $user->mostrar_metodos_pago($_SESSION['usuario']);
+        $this->view->show('MetodoPagoView.php', $data);
     }
 }
