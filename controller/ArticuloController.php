@@ -1,5 +1,6 @@
 <?php
 
+
 class ArticuloController
 {
     public function __construct()

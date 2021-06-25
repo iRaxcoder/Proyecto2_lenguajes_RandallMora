@@ -32,10 +32,12 @@ class UserController
 
     public function mostrar_principal_ventas()
     {
-        require './model/ArticuloModel.php';
+
+        require_once './model/ArticuloModel.php';
         $articulo = new ArticuloModel();
         $data['categorias'] = $articulo->mostrar_categorias();
         $data['promos'] = $articulo->obtener_promociones();
+        $data['metodos'] = $articulo->mostrar_metodos_carrito($_SESSION['usuario']);
         $this->view->show("PrincipalVentasView.php", $data);
     }
 

@@ -199,4 +199,14 @@ class ArticuloModel
         $consulta->closeCursor();
         return $resultado;
     }
+
+    public function mostrar_metodos_carrito($usuario)
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_tarjeta(:p_usuario)');
+        $consulta->bindParam(':p_usuario', $usuario);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
 }

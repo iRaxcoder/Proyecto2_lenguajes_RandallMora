@@ -104,16 +104,11 @@ include_once './public/header.php';
                             <p>válido hasta el: <?php echo $item['fecha_final'] ?> </p>
                             <a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>
                             <input id="numero" type="number" min="1" style="width: 50px;" value="1">
-                            <a id="agregar_carrito" href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'
-                            
-                            data-id='<?php echo $item['id_articulo']  ?>'
-                            data-nombre='<?php echo $item['nombre_articulo']  ?>'
-                            data-precio='<?php echo $item['PRECIO_REBAJA']  ?>'
-                            >
-                                
+                            <a id="agregar_carrito" href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary' data-id='<?php echo $item['id_articulo']  ?>' data-nombre='<?php echo $item['nombre_articulo']  ?>' data-precio='<?php echo $item['PRECIO_REBAJA']  ?>'>
+
                                 <img height='25px' src='/public/img/carrito.png' alt='carrito'>
                             </a>
-                            <a href='#' class='btn btn-primary'>
+                            <a href='javascript:;' onclick="mostrar_compra_modal(this);" class='btn btn-primary' data-bs-toggle="modal" data-bs-target="#modalCompra">
                                 <img height='25px' src='/public/img/comprar.png' alt='comprar directo'>
                             </a>
                         </div>
@@ -129,27 +124,59 @@ include_once './public/header.php';
         <ul id="carritoC" class="list-group"></ul>
         <p id="total" class="text-center">Total: <span id="Total"></span>&dollar;</p>
         <button onclick="vaciar_carrito();" id="boton-vaciar" class="btn btn-danger">Vaciar</button>
-        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#exampleModal">Verificar compra</button>
+        <button type="button" class="btn btn-success" onclick="mostrar_carrito_modal();" data-bs-toggle="modal" data-bs-target="#modalCompra">Verificar compra</button>
     </aside>
 </div>
 
 <!-- Modal -->
-<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModal" aria-hidden="true">
+<div class="modal" id="modalCompra" tabindex="-1" role="dialog" aria-labelledby="modalCompra" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Verificar compra</h5>
+                <h2 class="modal-title" id="modalCompraLabel">Verificar compra</h2>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <h3 style="border-bottom: red 5px solid;">Detalles de la compra</h3>
+                <ul id="carritoModal" class="list-group"></ul>
+                <p id="totalModal" class="text-center">Total: <span id="Total"></span>&dollar;</p>
+                <h4 style="border-bottom: red 5px solid;">Selección de método de pago</h4>
+                <?php
+                if (isset($vars['metodos']) && $vars['metodos'] != null) {
+                ?>
+
+                    <select class="form-control">
+                        <?php
+                        foreach ($vars['metodos'] as $item) {
+                        ?>
+
+                            <option value="<?php echo $item['id_tarjeta_credito'] ?>">
+                                <?php echo $item['numero_tarjeta'] ?>
+                            </option>
+                        <?php
+                        }
+                        ?>
+                    </select>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Realizar pago</button>
+                        <button type="button" class="btn btn-secondary" class="close" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                <?php
+                } else {
+                ?>
+                    <h5>¡Vaya! No se ha encontrado un método de pago registrado.</h5>
+                    <div class="modal-footer">
+                        <a href="?controlador=User&accion=mostrar_metodos_pago_view">Agregar método de pago</a>
+                        <button type="button" class="btn btn-secondary" class="close" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
+                <?php
+                }
+                ?>
+
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" class="close" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary">Confirmar</button>
-            </div>
+
         </div>
     </div>
 </div>
