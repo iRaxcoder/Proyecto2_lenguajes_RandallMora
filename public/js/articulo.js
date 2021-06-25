@@ -32,10 +32,10 @@ function mostrar_articulos(opcion) {
                     "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
                     "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a id='" + value['ID_ARTICULO'] + "' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
-                    "<a href='#' class='btn btn-primary'>" +
+                    "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
                     "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
                     "</a>" +
                     " </div>" +
@@ -79,14 +79,14 @@ function buscar_por_nombre(nombre) {
                     "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
                     "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a id='" + value['ID_ARTICULO'] + "' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
+                    "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
                     "data-id='" + value['ID_ARTICULO'] + "'" +
                     " data-nombre='" + value['NOMBRE_ARTICULO'] + "'" +
                     "data-precio='" + value['PRECIO'] + "'" +
                     ">" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
-                    "<a href='#' class='btn btn-primary'>" +
+                    "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
                     "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
                     "</a>" +
                     " </div>" +
@@ -105,15 +105,15 @@ function buscar_por_nombre(nombre) {
                     "<p>válido hasta el: " + value['fecha_final'] + " </p>" +
                     "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a id='" + value['id_articulo'] + "' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
+                    "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
                     "data-id='" + value['id_articulo'] + "'" +
                     " data-nombre='" + value['nombre_articulo'] + "'" +
                     "data-precio='" + value['PRECIO_REBAJA'] + "'" +
                     ">" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
-                    "<a href='#' class='btn btn-primary'>" +
-                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
+                    "<img height='25px' src='/public/img/comprar.png' alt='comprar directo'>" +
                     "</a>" +
                     " </div>" +
                     "</div>";
@@ -160,14 +160,14 @@ function buscar_por_categoria(categoria) {
                     "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
                     "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a id='" + value['ID_ARTICULO'] + "' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
+                    "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
                     "data-id='" + value['ID_ARTICULO'] + "'" +
                     " data-nombre='" + value['NOMBRE_ARTICULO'] + "'" +
                     "data-precio='" + value['PRECIO'] + "'" +
                     ">" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
-                    "<a href='#' class='btn btn-primary'>" +
+                    "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
                     "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
                     "</a>" +
                     " </div>" +
@@ -186,7 +186,7 @@ function buscar_por_categoria(categoria) {
                     "<p>válido hasta el: " + value['fecha_final'] + " </p>" +
                     "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a id='" + value['id_articulo'] + "' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
+                    "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
 
                     "data-id='" + value['id_articulo'] + "'" +
                     " data-nombre='" + value['nombre_articulo'] + "'" +
@@ -194,7 +194,7 @@ function buscar_por_categoria(categoria) {
                     ">" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
-                    "<a href='javascript:;' class='btn btn-primary'>" +
+                    "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
                     "<img height='25px' src='/public/img/comprar.png' alt='comprar directo'>" +
                     "</a>" +
                     " </div>" +
@@ -241,14 +241,14 @@ function mostrar_favoritos() {
                     "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
                     "<a id='fav' href='?controlador=User&accion=mostrar_principal_ventas' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a id='" + value['ID_ARTICULO'] + "' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
+                    "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
                     "data-id='" + value['ID_ARTICULO'] + "'" +
                     " data-nombre='" + value['NOMBRE_ARTICULO'] + "'" +
                     "data-precio='" + value['PRECIO'] + "'" +
                     ">" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
-                    "<a href='#' class='btn btn-primary'>" +
+                    "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
                     "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
                     "</a>" +
                     " </div>" +

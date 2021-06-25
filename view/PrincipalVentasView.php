@@ -104,11 +104,11 @@ include_once './public/header.php';
                             <p>válido hasta el: <?php echo $item['fecha_final'] ?> </p>
                             <a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>
                             <input id="numero" type="number" min="1" style="width: 50px;" value="1">
-                            <a id="agregar_carrito" href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary' data-id='<?php echo $item['id_articulo']  ?>' data-nombre='<?php echo $item['nombre_articulo']  ?>' data-precio='<?php echo $item['PRECIO_REBAJA']  ?>'>
+                            <a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary' data-id='<?php echo $item['id_articulo']  ?>' data-nombre='<?php echo $item['nombre_articulo']  ?>' data-precio='<?php echo $item['PRECIO_REBAJA']  ?>'>
 
                                 <img height='25px' src='/public/img/carrito.png' alt='carrito'>
                             </a>
-                            <a href='javascript:;' onclick="mostrar_compra_modal(this);" class='btn btn-primary' data-bs-toggle="modal" data-bs-target="#modalCompra">
+                            <a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>
                                 <img height='25px' src='/public/img/comprar.png' alt='comprar directo'>
                             </a>
                         </div>
@@ -147,7 +147,7 @@ include_once './public/header.php';
                 if (isset($vars['metodos']) && $vars['metodos'] != null) {
                 ?>
 
-                    <select class="form-control">
+                    <select id="selec_metodo" name="selec_metodo" class="form-control">
                         <?php
                         foreach ($vars['metodos'] as $item) {
                         ?>
@@ -160,7 +160,7 @@ include_once './public/header.php';
                         ?>
                     </select>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-primary">Realizar pago</button>
+                        <button type="button" onclick="realizar_pago_directo($('#selec_metodo').val());" class="btn btn-primary">Realizar pago</button>
                         <button type="button" class="btn btn-secondary" class="close" data-bs-dismiss="modal">Cerrar</button>
                     </div>
                 <?php

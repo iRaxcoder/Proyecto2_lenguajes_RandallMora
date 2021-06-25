@@ -4,10 +4,16 @@ var DOMtotal;
 var DOMcarrito;
 var DOMfavorito;
 var usuario;
+var articulo_compra;
+var totalDirecto;
+var id_venta;
+var tarjeta_id;
 
 function principal() {
     carrito = [];
     total = 0.00;
+    id_venta = 0;
+    totalDirecto = 0.00;
     DOMtotal = document.querySelector('#total');
     DOMcarrito = document.querySelector('#carritoC');
     usuario = document.getElementById("n_usuario").textContent;
@@ -22,6 +28,7 @@ function create_articulo(id, nombre, precio, cantidad) {
     this.nombre = nombre;
     this.precio = precio;
     this.cantidad = cantidad;
+    this.subtotal = (parseFloat(precio) * parseFloat(cantidad)).toFixed(5);
 }
 
 function agregar_al_carrito(boton) {
@@ -214,7 +221,8 @@ function llenar_carrito_bd() {
                     id: value['id_articulo'],
                     nombre: value['nombre_articulo'],
                     precio: value['precio'],
-                    cantidad: value['cantidad']
+                    cantidad: value['cantidad'],
+                    subtotal: (parseFloat(value['precio']) * parseFloat(value['cantidad'])).toFixed(5)
                 };
                 carrito.push(articuloAux);
             });
@@ -232,8 +240,15 @@ function llenar_carrito_bd() {
 
 
 function agregar_favorito(ref) {
-    //
-    var nombre_d_articulo = document.getElementById("nombre_articulo").textContent;
+    //buscar nombre_articulo
+
+    nodoAux = ref.nextSibling;
+
+    while (nodoAux.id != 'agregar_carrito') {
+        nodoAux = nodoAux.nextSibling;
+    }
+
+    var nombre_d_articulo = nodoAux.dataset.nombre;
 
     var parametros = {
         "nombre_usuario": usuario,
@@ -264,6 +279,7 @@ function mostrar_carrito_modal() {
     DOMTotal.textContent = "Total: $" + total.toFixed(5)
 
     DOMcarritoModal.textContent = '';
+    DOMcarritoModal.dataset.seleccion = 'carrito';
 
     carrito.forEach((item) => {
         const miNodo = document.createElement('li');
@@ -276,20 +292,40 @@ function mostrar_carrito_modal() {
 }
 
 function mostrar_compra_modal(elemento) {
-    var DOMArticulo = document.getElementById('agregar_carrito');
-    var precio = DOMArticulo.dataset.precio;
-    var nombre = DOMArticulo.dataset.nombre;
 
     nodoAux = elemento;
-    //buscar cantidad
+    //buscar info del articulo
+
+    while (nodoAux.id != 'agregar_carrito') {
+        nodoAux = nodoAux.previousSibling;
+    }
+
+    var precio = nodoAux.dataset.precio;
+    var nombre = nodoAux.dataset.nombre;
+    var id = nodoAux.dataset.id;
+
 
     while (nodoAux.tagName != 'INPUT') {
         nodoAux = nodoAux.previousSibling;
     }
     var cantidad = nodoAux.value;
+    var totalArt = (parseFloat(precio) * parseFloat(cantidad)).toFixed(2);
+    totalDirecto = totalArt;
+    //configura el carrito
 
     var DOMcarritoModal = document.getElementById('carritoModal');
     DOMcarritoModal.textContent = '';
+    DOMcarritoModal.dataset.seleccion = 'directa';
+
+    //actualiza el articulo actual a comprar
+
+    articulo_compra = {
+        "id": id,
+        "cantidad": cantidad,
+        "subtotal": totalArt
+    }
+
+    // construye y agrega nodo
 
     const miNodo = document.createElement('li');
     miNodo.classList.add('list-group-item', 'text-left', 'mx-1');
@@ -299,5 +335,97 @@ function mostrar_compra_modal(elemento) {
     DOMcarritoModal.appendChild(miNodo);
 
     var DOMTotal = document.getElementById('totalModal');
-    DOMTotal.textContent = "Total: $" + (parseFloat(precio) * parseFloat(cantidad)).toFixed(2)
+    DOMTotal.textContent = "Total: $" + totalArt;
+}
+
+function realizar_pago_directo(select) {
+    var DOMcarritoModal = document.getElementById('carritoModal');
+    tarjeta_id = select;
+    id_venta = registrar_venta();
+    if (DOMcarritoModal.dataset.seleccion == 'carrito') {
+
+        carrito.forEach((item) => {
+            registrar_compra_articulo(item);
+        });
+
+        vaciar_carrito();
+
+    } else if (DOMcarritoModal.dataset.seleccion == 'directa') {
+        //se registra la venta y se obtiene el id de la venta.
+        registrar_compra_articulo(articulo_compra);
+        //registrar compra del articulo
+
+        //alert(articulo_compra.cantidad);
+    }
+    alert("ARTIMAX dice \n\n Gracias por apoyarnos con su compra.")
+    cerrar_modal();
+}
+
+
+
+function registrar_venta() {
+    var total_t = 0.00;
+    var id_venta_aux;
+    if (totalDirecto == 0.00) {
+        total_t = total;
+    } else {
+        total_t = totalDirecto;
+    }
+
+    var parametros = {
+        "total": total_t
+    };
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Venta&accion=registrar_venta',
+        dataType: "text",
+        type: 'post',
+        async: false,
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+            id_venta_aux = parseInt(response);
+            //reinicia total compra individual
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+    });
+    return id_venta_aux;
+}
+
+function registrar_compra_articulo(articuloCompra) {
+    var parametros = {
+        "id_articulo": articuloCompra.id,
+        "id_venta": id_venta,
+        "id_tarjeta": tarjeta_id,
+        "cantidad": articuloCompra.cantidad,
+        "subtotal": articuloCompra.subtotal
+    };
+
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Venta&accion=registrar_compra_articulo',
+        dataType: "text",
+        type: 'post',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+
+    });
+    return false;
+}
+
+
+function cerrar_modal() {
+    $("#modalCompra").modal('hide');
+    $('body').removeClass('modal-open');
+    $('.modal-backdrop').remove();
 }
