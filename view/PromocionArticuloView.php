@@ -19,13 +19,13 @@ include_once 'headerAdminView.php';
 
 </html>
 
-<table class="table table-hover">
+<table class="table table-hover table-responsive">
     <thead>
         <tr>
             <th scope="col">ID</th>
             <th scope="col">Nombre</th>
             <th scope="col">Precio</th>
-            <th scope="col">Descripcion</th>
+            <th scope="col">Descripción</th>
             <th scope="col">Categoria</th>
         </tr>
     </thead>
@@ -49,45 +49,37 @@ include_once 'headerAdminView.php';
     </tbody>
 </table>
 
-<div class="row text-center">
+<div class="row">
 
-    <div class="col-md-12">
+    <div class="col-md-4 offset-md-4" style="border-style: dotted; border-color: red;">
 
         <form action="?controlador=Articulo&accion=registrar_promocion" method="post">
 
-            <div class="row">
-                <div class=" col-md-12 register-form-header">
-                    <p class="register-form-font-header">Promocion de articulos <span>ArtiMax</span>
-                    </p>
-                </div>
-            </div>
+            <h3>Promoción de articulos ArtiMax</h3>
             <!-- fecha inicio -->
-            <div class="row">
-                <div class="col-md-12">
-                    <label for="inicio">Fecha inicial</label>
-                    <input type="date" name="fecha_inicial" id="fecha_inicial">
-                </div>
+            <div class="form-group">
+                <label for="inicio">Fecha inicial</label>
+                <input type="date" class="form-control" name="fecha_inicial" id="fecha_inicial" required>
+
             </div>
             <!-- fecha final -->
-            <div class="row">
-                <div class="col-md-12">
-                    <label for="final">Fecha final</label>
-                    <input type="date" name="fecha_final" id="fecha_final">
-                </div>
+            <div class="form-group">
+                <label for="final">Fecha final</label>
+                <input type="date" class="form-control" name="fecha_final" id="fecha_final" required>
+
             </div>
             <!-- id -->
-            <div class="row">
-                <div class="col-md-12">
-                    <input type="id" id="id_articulo" name="id_articulo" placeholder="id articulo" required>
-                </div>
+            <div class="form-group">
+                <label for="id_articulo">ID Articulo: </label>
+                <input type="id" class="form-control" id="id_articulo" name="id_articulo" placeholder="id articulo" required>
+
             </div>
             <!-- precio promo -->
             <div class="row">
-                <div class="col-md-12">
-                    <input type="precio" id="precio_nuevo" name="precio_nuevo" placeholder="precio promo $" required>
-                </div>
-            </div>
+                <label for="precio_nuevo">Precio nuevo: </label>
+                <input type="number" class="form-control" id="precio_nuevo" name="precio_nuevo" placeholder="n%" required>
 
+            </div>
             <!-- boton registrar -->
             <div class="row">
                 <div class="col-md-12 register-row">

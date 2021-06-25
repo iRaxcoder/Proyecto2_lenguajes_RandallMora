@@ -21,47 +21,43 @@ include_once 'headerAdminView.php';
 
 <div class="row text-center">
 
-    <div class="col-md-12">
+    <div class="col-md-4 offset-md-4" style="border-style: dotted; border-color: red;">
 
         <form method="post">
 
-            <div class="row">
-                <div class=" col-md-12 register-form-header">
-                    <p class="register-form-font-header">Registro Administrador de <span>ArtiMax</span>
-                    </p>
-                </div>
-            </div>
+            <h3>Registro de administrador ArtiMax</h3>
             <!-- usuario -->
-            <div class="row">
-                <div class="col-md-12">
-                    <input type="usuario" id="usuario2" name="usuario" placeholder="Nombre de usuario" required>
-                </div>
+            <div class="form-group">
+                <label for="usuario">Nombre de usuario:</label>
+                <input type="usuario" class="form-control" id="usuario2" name="usuario" placeholder="Nombre de usuario" required>
+
             </div>
             <!-- edad -->
-            <div class="row">
-                <div class="col-md-12">
-                    <input type="edad" id="edad" name="edad" placeholder="Edad" required>
-                </div>
+            <div class="form-group">
+
+                <label for="edad">Edad:</label>
+                <input type="edad" class="form-control" id="edad" name="edad" placeholder="Edad" required>
+
             </div>
             <!-- direccion -->
-            <div class="row">
-                <div class="col-md-12">
-                    <textarea name="direccion" id="direccion" cols="22.5" style="resize: none;" placeholder="Direccion principal" rows="4"></textarea>
-                </div>
+            <div class="form-group">
+                <label for="direccion">Dirección: </label>
+                <textarea class="form-control" name="direccion" id="direccion" cols="22.5" style="resize: none;" placeholder="Direccion principal" rows="4"></textarea>
+
             </div>
-            <div class="row"></div>
-            <div class="col-md-12">
-                <input type="contrasennia" id="contrasenniaR" name="contrasenniaR" placeholder="Contraseña">
+            <div class="form-group">
+                <label for="contrasenniaR">Contraseña: </label>
+                <input class="form-control" type="contrasennia" id="contrasenniaR" name="contrasenniaR" placeholder="Contraseña">
             </div>
             <!-- genero -->
-            <div class="row">
-                <div class="col-md-12">
-                    <select name="genero" id="genero">
-                        <option value="masculino">Masculino</option>
-                        <option value="femenino">Femenino</option>
-                        <option value="otro">Otro</option>
-                    </select>
-                </div>
+            <div class="form-group">
+                <label for="genero">Género: </label>
+                <select class="form-control" name="genero" id="genero">
+                    <option value="masculino">Masculino</option>
+                    <option value="femenino">Femenino</option>
+                    <option value="otro">Otro</option>
+                </select>
+
             </div>
             <!-- boton registrar -->
             <div class="row">

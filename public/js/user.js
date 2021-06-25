@@ -1,47 +1,3 @@
-function iniciar_sesion(usuario, contrasennia) {
-    alert(usuario + contrasennia)
-    var parametros = {
-        "usuario": usuario,
-        "contrasennia": contrasennia
-    };
-    $.ajax({
-        data: parametros,
-        url: '?controlador=User&accion=iniciar_sesion',
-        dataType: "json",
-        type: 'post',
-        beforeSend: function () {
-
-        },
-        success: function (response) {
-
-            if (response == "0") {
-                div = document.querySelector(".mensaje");
-                var html_text = "<div class='alert alert-danger' role='alert'>Ha ocurrido un error</div>";
-                div.innerHTML = html_text;
-            }
-            if (response == "1") {
-                mostrar_modulo_admin();
-            }
-            if (response == "2") {
-
-            }
-
-
-            // div = document.querySelector(".mensaje");
-            // var html_text = "<div class='alert alert-success' role='alert'>" + response + "</div>";
-            // div.innerHTML = html_text;
-
-        },
-        error: function (jqXHR, textStatus, errorThrown) {
-
-            div = document.querySelector(".mensaje");
-            var html_text = "<div class='alert alert-danger' role='alert'>" + "Ha ocurrido un error" + "</div>";
-            div.innerHTML = html_text;
-        }
-    });
-    return false;
-}
-
 function registrar_usuario(usuario, role, edad, direccion, genero, contrasennia) {
     alert(usuario + role + edad + direccion + genero + contrasennia);
     var parametros = {
@@ -68,6 +24,31 @@ function registrar_usuario(usuario, role, edad, direccion, genero, contrasennia)
             div = document.querySelector(".mensaje");
             var html_text = "<div class='alert alert-success' role='alert'>" + mensaje + "</div>";
             div.innerHTML = html_text;
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+
+    });
+    return false;
+}
+
+function borrar_metodo(boton) {
+    var id = boton.dataset.id;
+
+    var parametros = {
+        "id": id
+    };
+    $.ajax({
+        data: parametros,
+        url: '?controlador=User&accion=borrar_metodo_pago',
+        dataType: "text",
+        type: 'post',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+            
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(textStatus);
