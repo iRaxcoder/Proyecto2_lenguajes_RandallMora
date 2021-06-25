@@ -17,7 +17,7 @@ function principal() {
 }
 
 function create_articulo(id, nombre, precio, cantidad) {
-    alert("creado");
+
     this.id = id;
     this.nombre = nombre;
     this.precio = precio;
@@ -26,7 +26,6 @@ function create_articulo(id, nombre, precio, cantidad) {
 
 function agregar_al_carrito(boton) {
 
-    id_articulo = boton.id;
     nodoAux = boton;
     //buscar cantidad
 
@@ -34,27 +33,11 @@ function agregar_al_carrito(boton) {
         nodoAux = nodoAux.previousSibling;
     }
     var cantidad = nodoAux.value;
-    var precio = "";
-    //buscar precio
+    var precio = boton.dataset.precio;
+    var id_articulo = boton.dataset.id;
+    var nombre = boton.dataset.nombre;
 
-    while (nodoAux.id != 'precio') {
-        nodoAux = nodoAux.previousSibling
-    }
-    var hijos = nodoAux.childNodes;
-    var i = 0;
-    while (hijos[i].tagName != 'SPAN') {
-        i++;
-    }
-    precio = hijos[i].nextSibling.textContent;
 
-    //buscar nombre
-
-    while (nodoAux.id != "nombre_articulo") {
-        nodoAux = nodoAux.previousSibling;
-    }
-    var nombre = nodoAux.textContent;
-
-    alert(id_articulo + " " + nombre + " " + precio + " " + cantidad);
 
     //crea el objeto y hace push
     var articulo = new create_articulo(id_articulo, nombre, precio, cantidad);
@@ -274,5 +257,3 @@ function agregar_favorito(ref) {
 
 
 }
-
-

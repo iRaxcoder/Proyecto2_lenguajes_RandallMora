@@ -104,7 +104,13 @@ include_once './public/header.php';
                             <p>válido hasta el: <?php echo $item['fecha_final'] ?> </p>
                             <a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>
                             <input id="numero" type="number" min="1" style="width: 50px;" value="1">
-                            <a id="<?php echo $item['id_articulo'] ?>" href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>
+                            <a id="agregar_carrito" href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'
+                            
+                            data-id='<?php echo $item['id_articulo']  ?>'
+                            data-nombre='<?php echo $item['nombre_articulo']  ?>'
+                            data-precio='<?php echo $item['PRECIO_REBAJA']  ?>'
+                            >
+                                
                                 <img height='25px' src='/public/img/carrito.png' alt='carrito'>
                             </a>
                             <a href='#' class='btn btn-primary'>
