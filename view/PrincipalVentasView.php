@@ -124,7 +124,7 @@ include_once './public/header.php';
         <ul id="carritoC" class="list-group"></ul>
         <p id="total" class="text-center">Total: <span id="Total"></span>&dollar;</p>
         <button onclick="vaciar_carrito();" id="boton-vaciar" class="btn btn-danger">Vaciar</button>
-        <button type="button" class="btn btn-success" onclick="mostrar_carrito_modal();" data-bs-toggle="modal" data-bs-target="#modalCompra">Verificar compra</button>
+        <button type="button" class="btn btn-success" onclick="mostrar_carrito_modal();">Verificar compra</button>
     </aside>
 </div>
 

@@ -47,14 +47,15 @@ class UserModel
         return $resultado;
     }
 
-    public function registrar_metodo_pago($numero, $fecha, $cvv, $usuario, $propietario)
+    public function registrar_metodo_pago($numero, $fecha, $cvv, $usuario, $propietario,$direccion)
     {
-        $consulta = $this->db->prepare('call sp_insertar_tarjeta(:p_numero,:p_fecha,:p_cvv,:p_usuario,:p_propietario)');
+        $consulta = $this->db->prepare('call sp_insertar_tarjeta(:p_numero,:p_fecha,:p_cvv,:p_usuario,:p_propietario,:p_direccion)');
         $consulta->bindParam(':p_numero', $numero);
         $consulta->bindParam(':p_fecha', $fecha);
         $consulta->bindParam(':p_cvv', $cvv);
         $consulta->bindParam(':p_usuario', $usuario);
         $consulta->bindParam(':p_propietario', $propietario);
+        $consulta->bindParam(':p_direccion', $direccion);
         $consulta->execute();
         $resultado = $consulta->fetchAll();
         $consulta->closeCursor();

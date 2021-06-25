@@ -20,6 +20,7 @@ class UserController
         switch ($respuesta) {
             case 0:
                 echo '<script> alert("El usuario no existe")</script>';
+                $this->view->show("indexView.php", null);
                 break;
             case 1:
                 $this->view->show("headerAdminView.php", null);
@@ -57,7 +58,7 @@ class UserController
     {
         require_once './model/UserModel.php';
         $user = new UserModel();
-        $user->registrar_metodo_pago($_POST['numero_tarjeta'], $_POST['fecha_vencimiento'], $_POST['cvv'], $_SESSION['usuario'], $_POST['propietario']);
+        $user->registrar_metodo_pago($_POST['numero_tarjeta'], $_POST['fecha_vencimiento'], $_POST['cvv'], $_SESSION['usuario'], $_POST['propietario'],$_POST['direccion']);
         $data['metodos'] = $user->mostrar_metodos_pago($_SESSION['usuario']);
         $this->view->show('MetodoPagoView.php', $data);
     }

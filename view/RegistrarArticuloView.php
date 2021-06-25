@@ -21,65 +21,54 @@ include_once './view/headerAdminView.php';
 
 
 
-<div class="row text-center">
+<div class="row">
 
-    <div class="col-md-12">
+    <div class="col-md-2 offset-md-5" style="border-style: dotted; border-color: red;">
 
         <form action="?controlador=Articulo&accion=registrar_articulo" enctype="multipart/form-data" method="post">
 
-            <div class="row">
-                <div class=" col-md-12 register-form-header">
-                    <p class="register-form-font-header">Registro de articulos <span>ArtiMax</span>
-                    </p>
-                </div>
-            </div>
+            <h3>Registro de articulos ArtiMax </h3>
             <!-- nombre -->
-            <div class="row">
-                <div class="col-md-12">
-                    <input type="nombre" id="nombreArticulo" name="nombreArticulo" placeholder="nombre de articulo" required>
-                </div>
+            <div class="form-group">
+                <label for="nombreArticulo" aria-describedby="nombre_Articulo">Nombre: </label>
+                <input type="text" class="form-control" id="nombreArticulo" name="nombreArticulo" placeholder="nombre de articulo" required>
             </div>
             <!-- precio -->
-            <div class="row">
-                <div class="col-md-12">
-                    <input type="number" min="1" step="any" id="precio" name="precio" placeholder="precio" required>
-                </div>
+            <div class="form-group">
+                <label for="precio" aria-describedby="precioArt">Precio: </label>
+                <input type="number" min="1" class="form-control" step="any" id="precio" name="precio" placeholder="precio" required>
             </div>
             <!-- descripcion -->
-            <div class="row">
-                <div class="col-md-12">
-                    <textarea name="descripcion" id="descripcion" cols="22.5" style="resize: none;" placeholder="descripcion" rows="4"></textarea>
-                </div>
+            <div class="form-group">
+                <label for="descripcion" aria-describedby="descripcion">Descripción: </label>
+                <textarea name="descripcion" id="descripcion" cols="22.5" style="resize: none;" placeholder="descripcion" rows="4"></textarea>
+
             </div>
             <!-- categoria -->
-            <div class="row">
-                <div class="col-md-12">
-                    <select name="categoria" id="categoria">
-                        <option value="">Seleccionar categoria</option>
-                        <?php
-                        if (isset($vars['categorias'])) {
-                            foreach ($vars['categorias'] as $item) {
-                        ?>
-                                <option value=<?php echo $item['id_categoria']; ?>><?php echo $item['nombre_categoria']; ?></option>
-                        <?php
-                            }
+            <div class="form-group">
+                <label for="categoria" aria-describedby="categoria">Categoria: </label>
+                <select class="form-control" name="categoria" id="categoria">
+                    <option value="">Seleccionar categoria</option>
+                    <?php
+                    if (isset($vars['categorias'])) {
+                        foreach ($vars['categorias'] as $item) {
+                    ?>
+                            <option value=<?php echo $item['id_categoria']; ?>><?php echo $item['nombre_categoria']; ?></option>
+                    <?php
                         }
-                        ?>
-                    </select>
-                </div>
+                    }
+                    ?>
+                </select>
             </div>
             <!-- imagen -->
-            <div class="row">
-                <div class="col-md-12 upload-image">
-                    <input accept="image/png,image/jpeg" type="file" name="imagen" id="imagen" />
-                </div>
+            <div class="form-group">
+                <label for="imagen" aria-describedby="imagen">Imagen: </label>
+                <input accept="image/png,image/jpeg" class="form-control" type="file" name="imagen" id="imagen" />
             </div>
-    </div>
-    <!-- boton registrar -->
-    <div class="row">
-        <div class="col-md-12 register-row">
-            <button class="btn btn-primary">Registrar</button>
-        </div>
+            <!-- boton registrar -->
+            <div class="form-group">
+                <button class="btn btn-primary">Registrar</button>
+            </div>
     </div>
     </form>
 

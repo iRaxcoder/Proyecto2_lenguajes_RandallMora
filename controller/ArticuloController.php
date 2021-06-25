@@ -41,6 +41,7 @@ class ArticuloController
         } else if ($respuesta == 1) {
             echo '<script> alert("Articulo registrado con éxito.")</script>';
         }
+        $this->view->show("headerAdminView.php", null);
     }
 
     public function registrar_promocion()
