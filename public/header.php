@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,7 +5,10 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Bienvenid@ <?php echo $_SESSION["usuario"] ?></title>
+  <title>Bienvenid@
+    <?php if (isset($_SESSION["usuario"])) {
+      echo $_SESSION["usuario"];
+    } ?></title>
   <link rel="stylesheet" href="public/css/header.css">
   <script type="text/javascript" src="public/js/jquery.js"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
@@ -18,8 +19,10 @@
 
   <!-- header -->
   <div class="jumbotron text-center">
-    <h1>Articulos ArtiMax CR</h1>
-    <p>Venta de articulos de primera calidad. Productos nacionales e internacionales con los mejores precios</p>
+
+    <h1><img src="/public/img/carrito_header.png" width="100px" alt="carrito_header">Artículos ArtiMax CR
+    <img src="/public/img/compras.png" width="100px" alt="carrito_header"></h1>
+    <p>Venta de artículos de primera calidad. Productos nacionales e internacionales con los mejores precios.</p>
   </div>
 
 

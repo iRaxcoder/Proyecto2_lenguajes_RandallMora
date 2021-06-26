@@ -3,16 +3,17 @@ include_once './public/header.php';
 ?>
 
 <a href="?controlador=User&accion=mostrar_principal_ventas"><img width="50px" src="/public/img/volver.png" alt="volver"></a>
-<h3 id="titulo" class="text-center" style="margin-top: 1em; margin-left: 4em;">Compras realizadas</h3>
+<h3 id="titulo" class="text-center" style="margin-top: 1em; margin-right: 4em; ">Compras realizadas</h3>
 
 <div class="row ">
-    <div class="col-md-5 offset-md-4" >
+    <div class="col-md-6 offset-md-3" style="margin-bottom: 4em;">
 
-        <table id="tablaInforme" class="table table-hover table-responsive" >
+        <table id="tablaInforme" class="table table-hover table-responsive">
 
             <thead>
                 <tr>
                     <th scope="col">ID_venta</th>
+                    <th scope="col">Método de pago</th>
                     <th scope="col">Articulo</th>
                     <th scope="col">Cantidad</th>
                     <th scope="col">Precio</th>
@@ -28,6 +29,7 @@ include_once './public/header.php';
                 ?>
                         <tr>
                             <th scope="row"><?php echo $item['ID_VENTA'] ?></th>
+                            <td><?php echo $item['numero_tarjeta'] ?></td>
                             <td><?php echo $item['nombre_articulo'] ?></td>
                             <td><?php echo $item['CANTIDAD'] ?></td>
                             <td>$<?php echo $item['precio'] ?></td>

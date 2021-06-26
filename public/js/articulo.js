@@ -1,5 +1,10 @@
 const PROMOCION = 2;
 const ARTICULO = 1;
+var compra;
+
+function cargar_tipo_cambioA() {
+    compra = cargar_tipo_cambio();
+}
 
 
 function mostrar_articulos(opcion) {
@@ -29,10 +34,14 @@ function mostrar_articulos(opcion) {
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
-                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
+                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "/₡" + (parseFloat(value['PRECIO']) * compra).toFixed(1) + "</p>" +
                     "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
-                    "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'>" +
+                    "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
+                    "data-id='" + value['ID_ARTICULO'] + "'" +
+                    " data-nombre='" + value['NOMBRE_ARTICULO'] + "'" +
+                    "data-precio='" + value['PRECIO'] + "'" +
+                    ">" +
                     "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
@@ -76,7 +85,7 @@ function buscar_por_nombre(nombre) {
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
-                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
+                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "/₡" + (parseFloat(value['PRECIO']) * compra).toFixed(1) + "</p>" +
                     "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
                     "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
@@ -101,7 +110,7 @@ function buscar_por_nombre(nombre) {
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['nombre_articulo'] + "</h5>" +
                     " <p class='card-text'>" + value['descripcion'] + "</p>" +
-                    "<p id='precio'>$<del>$" + value['precio_regular'] + "</del><span>$</span>" + value['PRECIO_REBAJA'] + "</p>" +
+                    "<p id='precio'>$<del>$" + value['precio_regular'] + "</del><span>$</span>" + value['PRECIO_REBAJA'] + "/₡" + (parseFloat(value['PRECIO_REBAJA']) * compra).toFixed(1) + "</p>" +
                     "<p>válido hasta el: " + value['fecha_final'] + " </p>" +
                     "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
@@ -157,7 +166,7 @@ function buscar_por_categoria(categoria) {
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
-                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
+                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "/₡" + (parseFloat(value['PRECIO']) * compra).toFixed(1) + "</p>" +
                     "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
                     "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
@@ -182,7 +191,7 @@ function buscar_por_categoria(categoria) {
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['nombre_articulo'] + "</h5>" +
                     " <p class='card-text'>" + value['descripcion'] + "</p>" +
-                    "<p id='precio'>$<del>$" + value['precio_regular'] + "</del><span>$</span>" + value['PRECIO_REBAJA'] + "</p>" +
+                    "<p id='precio'>$<del>$" + value['precio_regular'] + "</del><span>$</span>" + value['PRECIO_REBAJA'] + "/₡" + (parseFloat(value['PRECIO_REBAJA']) * compra).toFixed(1) + "</p>" +
                     "<p>válido hasta el: " + value['fecha_final'] + " </p>" +
                     "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
@@ -238,7 +247,7 @@ function mostrar_favoritos() {
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
-                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "</p>" +
+                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "/₡" + (parseFloat(value['PRECIO']) * compra).toFixed(1) + "</p>" +
                     "<a id='fav' href='?controlador=User&accion=mostrar_principal_ventas' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
                     "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
@@ -288,7 +297,7 @@ function mostrar_promos() {
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['nombre_articulo'] + "</h5>" +
                     " <p class='card-text'>" + value['descripcion'] + "</p>" +
-                    "<p id='precio'>$<del>$" + value['precio_regular'] + "</del><span>$</span>" + value['PRECIO_REBAJA'] + "</p>" +
+                    "<p id='precio'>$<del>$" + value['precio_regular'] + "</del><span>$</span>" + value['PRECIO_REBAJA'] + "/₡" + (parseFloat(value['PRECIO_REBAJA']) * compra).toFixed(1) + "</p>" +
                     "<p>válido hasta el: " + value['fecha_final'] + " </p>" +
                     "<a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
                     "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
@@ -307,6 +316,117 @@ function mostrar_promos() {
                     "</div>";
                 contador += 1;
             });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+
+    });
+    return false;
+}
+
+function cargar_tipo_cambio() {
+    let date = new Date()
+    var tipo_cambio = document.getElementById('tipo_cambio');
+    let day = date.getDate()
+    let month = date.getMonth() + 1
+    let year = date.getFullYear()
+    var contador = 0;
+    var fecha;
+    var retorno;
+
+    if (month < 10) {
+        fecha = (`${day}/0${month}/${year}`);
+    } else {
+        fecha = (`${day}/${month}/${year}`);
+    }
+
+    tipo_cambio.textContent = '';
+
+    $.ajax({
+        data: fecha,
+        url: 'https://tipodecambio.paginasweb.cr/api/',
+        dataType: "json",
+        type: 'get',
+        async: false,
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+            $.each(response, function (key, value) {
+                if (contador < 2) {
+                    tipo_cambio.textContent += key + ': ' + '₡' + value + '/';
+                    if (contador == 0) {
+                        retorno = value;
+                    }
+                } else {
+                    tipo_cambio.textContent += key + ': ' + value + ' ';
+                }
+                contador++;
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+    });
+    return retorno;
+}
+
+
+function mostrar_por_precio() {
+
+    //  alert($('#orden').val());
+
+    var orden = () => {
+        if ($('#orden').val() == '1') {
+            return 'ascendente'
+        } else {
+            return 'descendente'
+        }
+    }
+    
+    parametros = {
+        "orden": $('#orden').val()
+    }
+
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Articulo&accion=mostrar_por_orden',
+        dataType: "json",
+        type: 'post',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+            var titulo = document.querySelector(".ofrecimiento");
+            var contenido = document.getElementById("rowArticulos");
+            contenido.innerHTML = "";
+            //
+            $.each(response['ordenado'], function (key, value) {
+
+                contenido.innerHTML +=
+                    " <div class='card col-md-4 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
+                    "<div class='card-body'>" +
+                    "<h5 id='nombre_articulo' class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
+                    " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
+                    "<p id='precio'><span>Precio: $</span>" + value['PRECIO'] + "/₡" + (parseFloat(value['PRECIO']) * compra).toFixed(1) + "</p>" +
+                    "<a id='fav' href='?controlador=User&accion=mostrar_principal_ventas' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>" +
+                    "<input id='numero' type='number' min='1' style='width: 50px;' value='1'>" +
+                    "<a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary'" +
+                    "data-id='" + value['ID_ARTICULO'] + "'" +
+                    " data-nombre='" + value['NOMBRE_ARTICULO'] + "'" +
+                    "data-precio='" + value['PRECIO'] + "'" +
+                    ">" +
+                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "</a>" +
+                    "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
+                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "</a>" +
+                    " </div>" +
+                    "</div>";
+            });
+            titulo.textContent = "Ordenados por precio " + orden();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(textStatus);

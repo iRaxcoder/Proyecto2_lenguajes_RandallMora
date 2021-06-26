@@ -12,6 +12,7 @@ include_once './public/header.php';
     <title>Document</title>
     <script src="/public/js/articulo.js"></script>
     <script src="/public/js/carrito_compra.js"></script>
+    <link rel="stylesheet" href="/public/css/principal.js">
 </head>
 
 
@@ -23,7 +24,7 @@ include_once './public/header.php';
 
 <div class="row">
     <div class="col-md-12">
-        <nav class="navbar navbar-right  navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-right navbar-expand-lg navbar-light bg-light">
             <a class="navbar-brand">
                 <?php
                 if (isset($_SESSION['usuario'])) {
@@ -37,10 +38,10 @@ include_once './public/header.php';
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse " id="navbarText">
+            <div class="collapse navbar-collapse navegacion" id="navbarText">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a href='javascript:;' onclick="mostrar_articulos(1); return false;" class="nav-link"> Articulos <span class="sr-only"></span></a>
+                        <a href='javascript:;' onclick="mostrar_articulos(1); return false;" class="nav-link"> Artículos <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
                         <a href="javascript:;" onclick="mostrar_promos();" class="nav-link">Promociones</a>
@@ -67,14 +68,21 @@ include_once './public/header.php';
 
 
 <div class='row' style="margin-top: 1em; margin-bottom: 1em;">
-    <div class="col-md-2 bg-light">
+    <div class="col-md-2 bg-danger bg-gradient">
         <nav class="navbar">
             <ul class="nav navbar-nav">
+                <h5 style="border-bottom: black 5px solid;">Ordenar por precio</h5>
+                <select class="form-control" onchange="mostrar_por_precio();" name="orden" id="orden">
+                    <option value="0">Ordenar por</option>
+                    <option value="1">Ascendente</option>
+                    <option value="2">Descendente</option>
+                </select>
+                <h5>Nombre</h5>
                 <form method="post" class=" form-inline" style="justify-content: right;">
-                    <input id="nombreArticulo" class="form-control mr-sm-2" style="justify-content: right; margin-bottom: 1em; border-bottom: crimson 5px solid;" type="search" placeholder="Articulo" aria-label="Search">
-                    <button onclick="buscar_por_nombre($('#nombreArticulo').val());return false;" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar articulo</button>
+                    <input id="nombreArticulo" class="form-control mr-sm-2" style="justify-content: right; margin-bottom: 1em;" type="search" placeholder="Articulo" aria-label="Search">
+                    <button onclick="buscar_por_nombre($('#nombreArticulo').val());return false;" class="btn btn-success my-2 my-sm-0" type="submit">Buscar articulo</button>
                 </form>
-                <h5 style="margin-top: 1em;">Categorias</h3>
+                <h5 style="margin-top: 1em;">Categorías</h3>
                     <?php
                     if (isset($vars['categorias'])) {
                         foreach ($vars['categorias'] as $item) {
@@ -90,7 +98,7 @@ include_once './public/header.php';
             </ul>
         </nav>
     </div>
-    <div class=" text-center col-md-6 ">
+    <div class=" text-center col-md-6">
         <h2 class="ofrecimiento" style="border-bottom: red 5px solid; position: relative; left: 2em;">Favoritos</h2>
         <div class="row articulosOF" id="rowArticulos">
             <?php
@@ -122,11 +130,11 @@ include_once './public/header.php';
             ?>
         </div>
     </div>
-    <aside class="text-center clear-fix col-md-3 offset-md-1 bg-light">
-        <h2 style="border-bottom: red 5px solid;">Carrito</h2>
+    <aside class="text-center clear-fix col-md-3 offset-md-1 bg-danger bg-gradient">
+        <h2 style="border-bottom: black 5px solid;">Carrito</h2>
         <ul id="carritoC" class="list-group"></ul>
         <p id="total" class="text-center">Total: <span id="Total"></span>&dollar;</p>
-        <button onclick="vaciar_carrito();" id="boton-vaciar" class="btn btn-danger">Vaciar</button>
+        <button onclick="vaciar_carrito();" id="boton-vaciar" class="btn bg-warning">Vaciar</button>
         <button type="button" class="btn btn-success" onclick="mostrar_carrito_modal();">Verificar compra</button>
     </aside>
 </div>
@@ -193,8 +201,9 @@ include_once './public/footer.php';
 ?>
 
 
-
+<script src="/public/js/articulo.js"></script>
 <script src="/public/js/carrito_compra.js"></script>
 <script>
     window.onload = principal();
+    window.onload = cargar_tipo_cambioA();
 </script>

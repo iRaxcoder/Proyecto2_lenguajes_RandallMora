@@ -1,0 +1,30 @@
+.col-md-5,
+.col-register {
+    border-style: solid;
+}
+
+.main {
+    border-bottom: red 5px dashed;
+}
+
+.register-body {
+    border-style: solid;
+}
+
+.login-form-header {
+    border-bottom: red 5px solid;
+}
+
+.login-row {
+    margin-top: 1em !important;
+}
+
+#genero {
+    width: 12em;
+}
+
+.register-row {
+    margin-top: 1em !important; 
+    margin-bottom: 1em !important;
+}
+

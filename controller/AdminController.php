@@ -52,6 +52,14 @@ class AdminController
         $this->view->show("GestionArticulosView.php", $data);
     }
 
+    public function mostrar_gestion_categoria_view()
+    {
+        require_once './model/ArticuloModel.php';
+        $items = new ArticuloModel();
+        $data['categorias'] = $items->mostrar_categorias();
+        $this->view->show("GestionCategoriaView.php", $data);
+    }
+
     public function modificar_articulo()
     {
         require_once './model/ArticuloModel.php';

@@ -33,6 +33,9 @@
                     <a class="nav-link" href="?controlador=Admin&accion=mostrar_registro_articulo_view">Registrar articulo <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="?controlador=Admin&accion=mostrar_gestion_categoria_view">Registrar categoria</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="?controlador=Admin&accion=mostrar_gestion_articulos_view">Gestión de articulos</a>
                 </li>
                 <li class="nav-item">

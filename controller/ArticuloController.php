@@ -145,4 +145,21 @@ class ArticuloController
         $resultado['favoritos'] = $articulo->mostrar_favoritos($_POST['usuario']);
         echo json_encode($resultado);
     }
+
+    public function insertar_categoria()
+    {
+        require_once './model/ArticuloModel.php';
+        $articulo = new ArticuloModel();
+        $resultado = $articulo->insertar_categoria($_POST['nombre_categoria']);
+        $data['categorias'] = $articulo->mostrar_categorias();
+        $this->view->show("GestionCategoriaView.php", $data);
+    }
+
+    public function mostrar_por_orden()
+    {
+        require_once './model/ArticuloModel.php';
+        $articulo = new ArticuloModel();
+        $resultado['ordenado'] = $articulo->mostrar_por_orden($_POST['orden']);
+        echo json_encode($resultado);
+    }
 }

@@ -209,4 +209,24 @@ class ArticuloModel
         $consulta->closeCursor();
         return $resultado;
     }
+
+    public function insertar_categoria($categoria)
+    {
+        $consulta = $this->db->prepare('call sp_insertar_categoria(:p_categoria)');
+        $consulta->bindParam(':p_categoria', $categoria);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
+    public function mostrar_por_orden($orden)
+    {
+        $consulta = $this->db->prepare('call sp_ordenar_articulos(:p_orden)');
+        $consulta->bindParam(':p_orden', $orden);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
 }

@@ -1,5 +1,4 @@
 function registrar_usuario(usuario, role, edad, direccion, genero, contrasennia) {
-    alert(usuario + role + edad + direccion + genero + contrasennia);
     var parametros = {
         "usuario2": usuario,
         "edad": edad,
@@ -48,7 +47,7 @@ function borrar_metodo(boton) {
 
         },
         success: function (response) {
-            
+
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(textStatus);
