@@ -49,8 +49,12 @@ include_once './public/header.php';
                         <a href="javascript:;" onclick="mostrar_favoritos();" class="nav-link">Favoritos</a>
                     </li>
                     <li class="nav-item">
+                        <a href="?controlador=User&accion=mostrar_historial_compras_view" class="nav-link">Historial de compras</a>
+                    </li>
+                    <li class="nav-item">
                         <a href="?controlador=User&accion=mostrar_metodos_pago_view" class="nav-link">Métodos de pago</a>
                     </li>
+
                     <li class="nav-item">
                         <a href="/index.php" class="nav-link">Cerrar sesión</a>
                     </li>

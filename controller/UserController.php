@@ -58,7 +58,7 @@ class UserController
     {
         require_once './model/UserModel.php';
         $user = new UserModel();
-        $user->registrar_metodo_pago($_POST['numero_tarjeta'], $_POST['fecha_vencimiento'], $_POST['cvv'], $_SESSION['usuario'], $_POST['propietario'],$_POST['direccion']);
+        $user->registrar_metodo_pago($_POST['numero_tarjeta'], $_POST['fecha_vencimiento'], $_POST['cvv'], $_SESSION['usuario'], $_POST['propietario'], $_POST['direccion']);
         $data['metodos'] = $user->mostrar_metodos_pago($_SESSION['usuario']);
         $this->view->show('MetodoPagoView.php', $data);
     }
@@ -77,5 +77,14 @@ class UserController
         $user = new UserModel();
         $data['metodos'] = $user->mostrar_metodos_pago($_SESSION['usuario']);
         $this->view->show('MetodoPagoView.php', $data);
+    }
+
+
+    public function mostrar_historial_compras_view()
+    {
+        require_once './model/VentaModel.php';
+        $ventas = new VentaModel();
+        $data['ventas'] = $ventas->mostrar_ventas_usuario($_SESSION['usuario']);
+        $this->view->show('HistorialVentasView.php', $data);
     }
 }

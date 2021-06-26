@@ -53,7 +53,7 @@ include_once './public/header.php';
                             <p>F.VENCIMIENTO: <?php echo $item['fecha_vencimiento'] ?></p>
                             <p>DIRECCIÓN: <?php echo $item['direccion'] ?></p>
                             <a data-id="<?php echo $item['id_tarjeta_credito'] ?>" href="?controlador=User&accion=mostrar_metodos_pago_view" onclick="borrar_metodo(this)">
-                            <img src="/public/img/borrar.png" width="25px" alt="quitar"></a>
+                                <img src="/public/img/borrar.png" width="25px" alt="quitar"></a>
                         </li>
                 <?php
                     }
@@ -67,15 +67,6 @@ include_once './public/header.php';
 
 </div>
 
-
-
-<div class="row text-center">
-
-
-
-
-
-</div>
 
 
 
