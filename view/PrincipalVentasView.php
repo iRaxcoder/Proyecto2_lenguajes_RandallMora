@@ -43,7 +43,7 @@ include_once './public/header.php';
                         <a href='javascript:;' onclick="mostrar_articulos(1); return false;" class="nav-link"> Articulos <span class="sr-only"></span></a>
                     </li>
                     <li class="nav-item">
-                        <a href="?controlador=User&accion=mostrar_principal_ventas" class="nav-link">Promociones</a>
+                        <a href="javascript:;" onclick="mostrar_promos();" class="nav-link">Promociones</a>
                     </li>
                     <li class="nav-item">
                         <a href="javascript:;" onclick="mostrar_favoritos();" class="nav-link">Favoritos</a>
@@ -86,25 +86,23 @@ include_once './public/header.php';
         </nav>
     </div>
     <div class=" text-center col-md-6 ">
-        <h2 class="ofrecimiento" style="border-bottom: red 5px solid; position: relative; left: 2em;">Promociones</h2>
+        <h2 class="ofrecimiento" style="border-bottom: red 5px solid; position: relative; left: 2em;">Favoritos</h2>
         <div class="row articulosOF" id="rowArticulos">
             <?php
-            if (isset($vars['promos'])) {
-                foreach ($vars['promos'] as $item) {
+            if (isset($vars['favoritos'])) {
+                foreach ($vars['favoritos'] as $item) {
             ?>
                     <div class='card col-md-5 offset-md-1' style='width: 18rem; margin-bottom: 1em;'>
-                        <img class='card-img-top' height='200px' width='200px' src='/public/img/<?php echo $item['nombre_imagen'] ?>' alt='Card image cap'>
+                        <img class='card-img-top' height='200px' width='200px' src='/public/img/<?php echo $item['NOMBRE_IMAGEN'] ?>' alt='Card image cap'>
                         <div class='card-body'>
-                            <h5 id="nombre_articulo" class='card-title'><?php echo $item['nombre_articulo'] ?></h5>
-                            <p class='card-text'><?php echo $item['descripcion'] ?></p>
-                            <p id="precio">
-                                <del>$<?php echo $item['precio_regular'] ?></del>
-                                <span>$</span><?php echo $item['PRECIO_REBAJA'] ?>
+                            <h5 id="nombre_articulo" class='card-title'><?php echo $item['NOMBRE_ARTICULO'] ?></h5>
+                            <p class='card-text'><?php echo $item['DESCRIPCION'] ?></p>
+                            <p id="precio">Precio: $
+                                <?php echo $item['PRECIO'] ?>
                             </p>
-                            <p>válido hasta el: <?php echo $item['fecha_final'] ?> </p>
                             <a id='fav' href='javascript:;' onclick='agregar_favorito(this);'>Agregar/quitar fav</a>
                             <input id="numero" type="number" min="1" style="width: 50px;" value="1">
-                            <a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary' data-id='<?php echo $item['id_articulo']  ?>' data-nombre='<?php echo $item['nombre_articulo']  ?>' data-precio='<?php echo $item['PRECIO_REBAJA']  ?>'>
+                            <a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary' data-id='<?php echo $item['ID_ARTICULO']  ?>' data-nombre='<?php echo $item['NOMBRE_ARTICULO']  ?>' data-precio='<?php echo $item['PRECIO']  ?>'>
 
                                 <img height='25px' src='/public/img/carrito.png' alt='carrito'>
                             </a>

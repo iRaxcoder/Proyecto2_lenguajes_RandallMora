@@ -37,7 +37,7 @@ class UserController
         require_once './model/ArticuloModel.php';
         $articulo = new ArticuloModel();
         $data['categorias'] = $articulo->mostrar_categorias();
-        $data['promos'] = $articulo->obtener_promociones();
+        $data['favoritos'] = $articulo->mostrar_favoritos($_SESSION['usuario']);
         $data['metodos'] = $articulo->mostrar_metodos_carrito($_SESSION['usuario']);
         $this->view->show("PrincipalVentasView.php", $data);
     }

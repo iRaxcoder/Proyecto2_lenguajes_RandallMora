@@ -82,6 +82,14 @@ class ArticuloController
         echo json_encode($data);
     }
 
+    public function obtener_promos()
+    {
+        require './model/ArticuloModel.php';
+        $articulo = new ArticuloModel();
+        $resultado['promos'] = $articulo->obtener_promociones();
+        echo json_encode($resultado);
+    }
+
 
     public function obtener_articulos_categoria()
     {

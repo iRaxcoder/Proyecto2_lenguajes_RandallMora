@@ -34,4 +34,35 @@ class VentaModel
         $consulta->closeCursor();
         return $resultado;
     }
+
+    public function mostrar_ventas()
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_ventas()');
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
+    public function mostrar_ventas_rango($desde, $hasta)
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_ventas_rango(:p_fecha1,:p_fecha2)');
+        $consulta->bindParam(':p_fecha1', $desde);
+        $consulta->bindParam(':p_fecha2', $hasta);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
+
+    public function mostrar_ventas_mes_annio($mes, $annio)
+    {
+        $consulta = $this->db->prepare('call sp_mostrar_ventas_mes_año(:mes,:annio)');
+        $consulta->bindParam(':mes', $mes);
+        $consulta->bindParam(':annio', $annio);
+        $consulta->execute();
+        $resultado = $consulta->fetchAll();
+        $consulta->closeCursor();
+        return $resultado;
+    }
 }

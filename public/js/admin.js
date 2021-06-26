@@ -134,3 +134,93 @@ function buscar_por_filtro(buscar) {
     });
     return false;
 }
+
+function buscar_venta_rango() {
+
+    var tablaInforme = $('#tablaInforme');
+    var desde = $('#desde').val();
+    var hasta = $('#hasta').val();
+    var titulo = document.getElementById('titulo');
+    var contador = 0;
+    var parametros = {
+        "desde": desde,
+        "hasta": hasta
+    };
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Admin&accion=obtener_ventas_rango',
+        dataType: "json",
+        type: 'post',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+
+            $("#tablaInforme > tbody").empty();
+            $.each(response['ventas'], function (key, value) {
+                tablaInforme.append(
+                    "<tr> <th scope='row'>" + value['id_venta'] + "</th>" +
+                    "<td>" + value['fecha_venta'] + " </td>" +
+                    "<td>" + value['total_venta'] + "</td>" +
+                    "</tr>"
+                );
+                contador += 1;
+            });
+            if (contador == 0) {
+                titulo.textContent = "No se han encontrado ventas"
+            } else {
+                titulo.textContent = "Ventas";
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+    });
+
+    return false;
+}
+
+function buscar_venta_mes_annio() {
+
+    var tablaInforme = $('#tablaInforme');
+    var mes = $('#mes').val();
+    var annio = $('#annio').val();
+    var titulo = document.getElementById('titulo');
+    var contador = 0;
+    var parametros = {
+        "mes": mes,
+        "annio": annio
+    };
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Admin&accion=obtener_ventas_mes_annio',
+        dataType: "json",
+        type: 'post',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+
+            $("#tablaInforme > tbody").empty();
+            $.each(response['ventas'], function (key, value) {
+                tablaInforme.append(
+                    "<tr> <th scope='row'>" + value['id_venta'] + "</th>" +
+                    "<td>" + value['fecha_venta'] + " </td>" +
+                    "<td>" + value['total_venta'] + "</td>" +
+                    "</tr>"
+                );
+                contador += 1;
+            });
+            if (contador == 0) {
+                titulo.textContent = "No se han encontrado ventas"
+            } else {
+                titulo.textContent = "Ventas";
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+    });
+
+    return false;
+}

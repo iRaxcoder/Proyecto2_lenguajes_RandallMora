@@ -42,6 +42,9 @@
                     <a class="nav-link" href="?controlador=Admin&accion=mostrar_gestion_usuario_admin">Gestion usuario admin</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link" href="?controlador=Admin&accion=mostrar_informes_ventas_view">Informe de ventas</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="/index.php">Cerrar sesión</a>
                 </li>
             </ul>

@@ -34,6 +34,15 @@ class AdminController
         $this->view->show("RegistrarAdminView.php", null);
     }
 
+
+    public function mostrar_informes_ventas_view()
+    {
+        require './model/VentaModel.php';
+        $ventas = new VentaModel();
+        $data['ventas'] = $ventas->mostrar_ventas();
+        $this->view->show("InformeVentasView.php", $data);
+    }
+
     public function mostrar_gestion_articulos_view()
     {
         require_once './model/ArticuloModel.php';
@@ -84,6 +93,21 @@ class AdminController
         require_once './model/ArticuloModel.php';
         $items = new ArticuloModel();
         $data['resultado'] = $items->obtener_articulos_categoria($_POST['tipo']);
+        echo json_encode($data);
+    }
+
+    public function obtener_ventas_rango()
+    {
+        require './model/VentaModel.php';
+        $ventas = new VentaModel();
+        $data['ventas'] = $ventas->mostrar_ventas_rango($_POST['desde'], $_POST['hasta']);
+        echo json_encode($data);
+    }
+
+    public function obtener_ventas_mes_annio(){
+        require './model/VentaModel.php';
+        $ventas = new VentaModel();
+        $data['ventas']=$ventas->mostrar_ventas_mes_annio($_POST['mes'],$_POST['annio']);
         echo json_encode($data);
     }
 }
