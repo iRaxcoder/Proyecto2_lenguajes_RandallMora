@@ -19,7 +19,9 @@ function principal() {
     usuario = document.getElementById("n_usuario").textContent;
     DOMfavorito = document.getElementById("fav");
     //
+    cargar_tipo_cambio();
     llenar_carrito_bd();
+
 }
 
 function create_articulo(id, nombre, precio, cantidad) {
@@ -436,4 +438,50 @@ function cerrar_modal() {
     $("#modalCompra").modal('hide');
     $('body').removeClass('modal-open');
     $('.modal-backdrop').remove();
+}
+
+function cargar_tipo_cambio() {
+    let date = new Date()
+    var tipo_cambio = document.getElementById('tipo_cambio');
+    let day = date.getDate()
+    let month = date.getMonth() + 1
+    let year = date.getFullYear()
+    var contador = 0;
+    var fecha;
+
+    if (month < 10) {
+        fecha = (`${day}/0${month}/${year}`);
+    } else {
+        fecha = (`${day}/${month}/${year}`);
+    }
+
+    var parametros = {
+        "e": "e"
+    };
+
+    tipo_cambio.textContent = '';
+
+    $.ajax({
+        data: parametros,
+        url: 'https://tipodecambio.paginasweb.cr/api/' + fecha,
+        dataType: "json",
+        type: 'get',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
+            $.each(response, function (key, value) {
+                if (contador < 2) {
+                    tipo_cambio.textContent += key + ': ' + '₡' + value + '/';
+                } else {
+                    tipo_cambio.textContent += key + ': ' + value + ' ';
+                }
+                contador++;
+            });
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+    });
+    return false;
 }

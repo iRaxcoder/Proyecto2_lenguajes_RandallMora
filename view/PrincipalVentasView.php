@@ -55,6 +55,7 @@ include_once './public/header.php';
                         <a href="/index.php" class="nav-link">Cerrar sesión</a>
                     </li>
                 </ul>
+                <p style="color: red;" id="tipo_cambio"></p>
             </div>
         </nav>
     </div>

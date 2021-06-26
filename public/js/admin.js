@@ -160,6 +160,7 @@ function buscar_venta_rango() {
             $.each(response['ventas'], function (key, value) {
                 tablaInforme.append(
                     "<tr> <th scope='row'>" + value['id_venta'] + "</th>" +
+                    "<td>" + value['nombre_usuario'] + " </td>" +
                     "<td>" + value['fecha_venta'] + " </td>" +
                     "<td>" + value['total_venta'] + "</td>" +
                     "</tr>"
@@ -200,11 +201,54 @@ function buscar_venta_mes_annio() {
 
         },
         success: function (response) {
+            $("#tablaInforme > tbody").empty();
+            $.each(response['ventas'], function (key, value) {
+                tablaInforme.append(
+                    "<tr> <th scope='row'>" + value['id_venta'] + "</th>" +
+                    "<td>" + value['nombre_usuario'] + " </td>" +
+                    "<td>" + value['fecha_venta'] + " </td>" +
+                    "<td>" + value['total_venta'] + "</td>" +
+                    "</tr>"
+                );
+                contador += 1;
+            });
+            if (contador == 0) {
+                titulo.textContent = "No se han encontrado ventas"
+            } else {
+                titulo.textContent = "Ventas";
+            }
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(textStatus);
+        }
+    });
+
+    return false;
+}
+
+function cargar_ventas() {
+    var tablaInforme = $('#tablaInforme');
+    var titulo = document.getElementById('titulo');
+
+    var contador = 0;
+    var parametros = {
+        "e": "e"
+    };
+    $.ajax({
+        data: parametros,
+        url: '?controlador=Admin&accion=obtener_ventas',
+        dataType: "json",
+        type: 'post',
+        beforeSend: function () {
+
+        },
+        success: function (response) {
 
             $("#tablaInforme > tbody").empty();
             $.each(response['ventas'], function (key, value) {
                 tablaInforme.append(
                     "<tr> <th scope='row'>" + value['id_venta'] + "</th>" +
+                    "<td>" + value['nombre_usuario'] + " </td>" +
                     "<td>" + value['fecha_venta'] + " </td>" +
                     "<td>" + value['total_venta'] + "</td>" +
                     "</tr>"

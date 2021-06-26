@@ -104,10 +104,19 @@ class AdminController
         echo json_encode($data);
     }
 
-    public function obtener_ventas_mes_annio(){
+    public function obtener_ventas_mes_annio()
+    {
         require './model/VentaModel.php';
         $ventas = new VentaModel();
-        $data['ventas']=$ventas->mostrar_ventas_mes_annio($_POST['mes'],$_POST['annio']);
+        $data['ventas'] = $ventas->mostrar_ventas_mes_annio($_POST['mes'], $_POST['annio']);
+        echo json_encode($data);
+    }
+
+    public function obtener_ventas()
+    {
+        require './model/VentaModel.php';
+        $ventas = new VentaModel();
+        $data['ventas'] = $ventas->mostrar_ventas();
         echo json_encode($data);
     }
 }
