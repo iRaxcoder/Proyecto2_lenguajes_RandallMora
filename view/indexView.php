@@ -46,7 +46,7 @@ include_once './public/header.php';
                             <button type="summit" class="btn btn-primary">Entrar</button>
                         </div>
                         <div class="col-md-6 text-center">
-                            <img src="/public/img/login.png" height="50px" width="50px" alt="login">
+                            <img src="public/img/login.png" height="50px" width="50px" alt="login">
                         </div>
                     </div>
                 </form>
@@ -78,7 +78,7 @@ include_once './public/header.php';
                             <textarea class="form-control" name="direccion" id="direccion" cols="20.5" style="resize: none;" placeholder="Direccion principal" rows="3"></textarea>
                         </div>
                         <div class="col-md-3 text-center offset-md-4">
-                            <img src="/public/img/register.png" height="70px" width="70px" alt="login">
+                            <img src="public/img/register.png" height="70px" width="70px" alt="login">
                         </div>
                     </div>
                     <div class="row">

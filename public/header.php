@@ -20,8 +20,8 @@
   <!-- header -->
   <div class="jumbotron text-center">
 
-    <h1><img src="/public/img/carrito_header.png" width="100px" alt="carrito_header">Artículos ArtiMax CR
-    <img src="/public/img/compras.png" width="100px" alt="carrito_header"></h1>
+    <h1><img src="public/img/carrito_header.png" width="100px" alt="carrito_header">Artículos ArtiMax CR
+    <img src="public/img/compras.png" width="100px" alt="carrito_header"></h1>
     <p>Venta de artículos de primera calidad. Productos nacionales e internacionales con los mejores precios.</p>
   </div>
 

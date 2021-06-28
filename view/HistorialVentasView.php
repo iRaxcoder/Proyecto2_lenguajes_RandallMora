@@ -2,7 +2,7 @@
 include_once './public/header.php';
 ?>
 
-<a href="?controlador=User&accion=mostrar_principal_ventas"><img width="50px" src="/public/img/volver.png" alt="volver"></a>
+<a href="?controlador=User&accion=mostrar_principal_ventas"><img width="50px" src="public/img/volver.png" alt="volver"></a>
 <h3 id="titulo" class="text-center" style="margin-top: 1em; margin-right: 4em; ">Compras realizadas</h3>
 
 <div class="row ">

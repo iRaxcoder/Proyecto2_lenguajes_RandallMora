@@ -30,7 +30,7 @@ function mostrar_articulos(opcion) {
 
                 contenido.innerHTML +=
                     " <div class='card col-md-4 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
-                    " <img class='card-img-top' height='200px' width='200px' src='/public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
+                    " <img class='card-img-top' height='200px' width='200px' src='public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
@@ -42,10 +42,10 @@ function mostrar_articulos(opcion) {
                     " data-nombre='" + value['NOMBRE_ARTICULO'] + "'" +
                     "data-precio='" + value['PRECIO'] + "'" +
                     ">" +
-                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
-                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/comprar.png' alt='carrito'>" +
                     "</a>" +
                     " </div>" +
                     "</div>";
@@ -81,7 +81,7 @@ function buscar_por_nombre(nombre) {
 
                 contenido.innerHTML +=
                     " <div class='card col-md-4 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
-                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
@@ -93,10 +93,10 @@ function buscar_por_nombre(nombre) {
                     " data-nombre='" + value['NOMBRE_ARTICULO'] + "'" +
                     "data-precio='" + value['PRECIO'] + "'" +
                     ">" +
-                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
-                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/comprar.png' alt='carrito'>" +
                     "</a>" +
                     " </div>" +
                     "</div>";
@@ -106,7 +106,7 @@ function buscar_por_nombre(nombre) {
 
                 contenido.innerHTML +=
                     " <div class='card col-md-4 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
-                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['nombre_imagen'] + "'" + " alt='" + value['nombre_imagen'] + "'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='public/img/" + value['nombre_imagen'] + "'" + " alt='" + value['nombre_imagen'] + "'>" +
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['nombre_articulo'] + "</h5>" +
                     " <p class='card-text'>" + value['descripcion'] + "</p>" +
@@ -119,10 +119,10 @@ function buscar_por_nombre(nombre) {
                     " data-nombre='" + value['nombre_articulo'] + "'" +
                     "data-precio='" + value['PRECIO_REBAJA'] + "'" +
                     ">" +
-                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
-                    "<img height='25px' src='/public/img/comprar.png' alt='comprar directo'>" +
+                    "<img height='25px' src='public/img/comprar.png' alt='comprar directo'>" +
                     "</a>" +
                     " </div>" +
                     "</div>";
@@ -162,7 +162,7 @@ function buscar_por_categoria(categoria) {
 
                 contenido.innerHTML +=
                     " <div class='card col-md-4 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
-                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
@@ -174,10 +174,10 @@ function buscar_por_categoria(categoria) {
                     " data-nombre='" + value['NOMBRE_ARTICULO'] + "'" +
                     "data-precio='" + value['PRECIO'] + "'" +
                     ">" +
-                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
-                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/comprar.png' alt='carrito'>" +
                     "</a>" +
                     " </div>" +
                     "</div>";
@@ -187,7 +187,7 @@ function buscar_por_categoria(categoria) {
 
                 contenido.innerHTML +=
                     " <div class='card col-md-4 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
-                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['nombre_imagen'] + "'" + " alt='" + value['nombre_imagen'] + "'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='public/img/" + value['nombre_imagen'] + "'" + " alt='" + value['nombre_imagen'] + "'>" +
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['nombre_articulo'] + "</h5>" +
                     " <p class='card-text'>" + value['descripcion'] + "</p>" +
@@ -201,10 +201,10 @@ function buscar_por_categoria(categoria) {
                     " data-nombre='" + value['nombre_articulo'] + "'" +
                     "data-precio='" + value['PRECIO_REBAJA'] + "'" +
                     ">" +
-                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
-                    "<img height='25px' src='/public/img/comprar.png' alt='comprar directo'>" +
+                    "<img height='25px' src='public/img/comprar.png' alt='comprar directo'>" +
                     "</a>" +
                     " </div>" +
                     "</div>";
@@ -243,7 +243,7 @@ function mostrar_favoritos() {
 
                 contenido.innerHTML +=
                     " <div class='card col-md-4 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
-                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
@@ -255,10 +255,10 @@ function mostrar_favoritos() {
                     " data-nombre='" + value['NOMBRE_ARTICULO'] + "'" +
                     "data-precio='" + value['PRECIO'] + "'" +
                     ">" +
-                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
-                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/comprar.png' alt='carrito'>" +
                     "</a>" +
                     " </div>" +
                     "</div>";
@@ -293,7 +293,7 @@ function mostrar_promos() {
 
                 contenido.innerHTML +=
                     " <div class='card col-md-4 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
-                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['nombre_imagen'] + "'" + " alt='" + value['nombre_imagen'] + "'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='public/img/" + value['nombre_imagen'] + "'" + " alt='" + value['nombre_imagen'] + "'>" +
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['nombre_articulo'] + "</h5>" +
                     " <p class='card-text'>" + value['descripcion'] + "</p>" +
@@ -307,10 +307,10 @@ function mostrar_promos() {
                     " data-nombre='" + value['nombre_articulo'] + "'" +
                     "data-precio='" + value['PRECIO_REBAJA'] + "'" +
                     ">" +
-                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
-                    "<img height='25px' src='/public/img/comprar.png' alt='comprar directo'>" +
+                    "<img height='25px' src='public/img/comprar.png' alt='comprar directo'>" +
                     "</a>" +
                     " </div>" +
                     "</div>";
@@ -406,7 +406,7 @@ function mostrar_por_precio() {
 
                 contenido.innerHTML +=
                     " <div class='card col-md-4 offset-md-2' style='width: 18rem; margin-bottom: 1em;'>" +
-                    " <img class='card-img-top' height='200px' width='200' src='/public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
+                    " <img class='card-img-top' height='200px' width='200' src='public/img/" + value['NOMBRE_IMAGEN'] + "'" + " alt='" + value['NOMBRE_IMAGEN'] + "'>" +
                     "<div class='card-body'>" +
                     "<h5 id='nombre_articulo' class='card-title'>" + value['NOMBRE_ARTICULO'] + "</h5>" +
                     " <p class='card-text'>" + value['DESCRIPCION'] + "</p>" +
@@ -418,10 +418,10 @@ function mostrar_por_precio() {
                     " data-nombre='" + value['NOMBRE_ARTICULO'] + "'" +
                     "data-precio='" + value['PRECIO'] + "'" +
                     ">" +
-                    "<img height='25px' src='/public/img/carrito.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/carrito.png' alt='carrito'>" +
                     "</a>" +
                     "<a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>" +
-                    "<img height='25px' src='/public/img/comprar.png' alt='carrito'>" +
+                    "<img height='25px' src='public/img/comprar.png' alt='carrito'>" +
                     "</a>" +
                     " </div>" +
                     "</div>";

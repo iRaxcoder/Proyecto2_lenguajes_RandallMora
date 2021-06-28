@@ -10,7 +10,7 @@ include_once 'headerAdminView.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gestion de articulos</title>
-    <script type="text/javascript" src="/public/js/admin.js"></script>
+    <script type="text/javascript" src="public/js/admin.js"></script>
 </head>
 
 <body>
@@ -47,7 +47,7 @@ include_once 'headerAdminView.php';
                         <td><?php echo $item['NOMBRE_ARTICULO'] ?></td>
                         <td>
                             <p id="nombreImagen" style="display: none;"><?php echo $item['NOMBRE_IMAGEN'] ?></p>
-                            <img width="30px" src="/public/img/<?php echo $item['NOMBRE_IMAGEN'] ?>" alt="imagenArticulo">
+                            <img width="30px" src="public/img/<?php echo $item['NOMBRE_IMAGEN'] ?>" alt="imagenArticulo">
                         </td>
                         <td><?php echo $item['PRECIO'] ?></td>
                         <td><?php echo $item['DESCRIPCION'] ?></td>

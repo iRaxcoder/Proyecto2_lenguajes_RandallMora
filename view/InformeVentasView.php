@@ -52,7 +52,7 @@ include_once 'headerAdminView.php';
     </div>
 
     <div class="col-md-2">
-        <a onclick="cargar_ventas()" href="javascript:;"> <img src="/public/img/actualizar.png" width="50px" alt="actualizar"></a>
+        <a onclick="cargar_ventas()" href="javascript:;"> <img src="public/img/actualizar.png" width="50px" alt="actualizar"></a>
     </div>
 </div>
 <!-- boton buscar -->
@@ -92,4 +92,4 @@ include_once 'headerAdminView.php';
     </tbody>
 </table>
 
-<script src="/public/js/admin.js"></script>
+<script src="public/js/admin.js"></script>

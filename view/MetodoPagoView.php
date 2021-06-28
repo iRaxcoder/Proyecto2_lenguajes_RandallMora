@@ -2,12 +2,12 @@
 include_once './public/header.php';
 ?>
 
-<script src="/public/js/user.js"></script>
+<script src="public/js/user.js"></script>
 
 <div class="row">
 
     <h2 style="margin-bottom: 2em; margin-left:1em">
-        <a href="?controlador=User&accion=mostrar_principal_ventas"><img width="50px" src="/public/img/volver.png" alt="volver"></a>
+        <a href="?controlador=User&accion=mostrar_principal_ventas"><img width="50px" src="public/img/volver.png" alt="volver"></a>
         Método de pago</h1>
         <div class="col col-md-3 offset-md-1">
             <h4 class="text-center" style="border-bottom: #F57333 3px solid">Registrar método</h4>
@@ -53,7 +53,7 @@ include_once './public/header.php';
                             <p>F.VENCIMIENTO: <?php echo $item['fecha_vencimiento'] ?></p>
                             <p>DIRECCIÓN: <?php echo $item['direccion'] ?></p>
                             <a data-id="<?php echo $item['id_tarjeta_credito'] ?>" href="?controlador=User&accion=mostrar_metodos_pago_view" onclick="borrar_metodo(this)">
-                                <img src="/public/img/borrar.png" width="25px" alt="quitar"></a>
+                                <img src="public/img/borrar.png" width="25px" alt="quitar"></a>
                         </li>
                 <?php
                     }

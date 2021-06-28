@@ -10,9 +10,9 @@ include_once './public/header.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <script src="/public/js/articulo.js"></script>
-    <script src="/public/js/carrito_compra.js"></script>
-    <link rel="stylesheet" href="/public/css/principal.js">
+    <script src="public/js/articulo.js"></script>
+    <script src="public/js/carrito_compra.js"></script>
+    <link rel="stylesheet" href="public/css/principal.js">
 </head>
 
 
@@ -106,7 +106,7 @@ include_once './public/header.php';
                 foreach ($vars['favoritos'] as $item) {
             ?>
                     <div class='card col-md-5 offset-md-1' style='width: 18rem; margin-bottom: 1em;'>
-                        <img class='card-img-top' height='200px' width='200px' src='/public/img/<?php echo $item['NOMBRE_IMAGEN'] ?>' alt='Card image cap'>
+                        <img class='card-img-top' height='200px' width='200px' src='public/img/<?php echo $item['NOMBRE_IMAGEN'] ?>' alt='Card image cap'>
                         <div class='card-body'>
                             <h5 id="nombre_articulo" class='card-title'><?php echo $item['NOMBRE_ARTICULO'] ?></h5>
                             <p class='card-text'><?php echo $item['DESCRIPCION'] ?></p>
@@ -117,10 +117,10 @@ include_once './public/header.php';
                             <input id="numero" type="number" min="1" style="width: 50px;" value="1">
                             <a id='agregar_carrito' href='javascript:;' onclick='agregar_al_carrito(this);' style='margin: 1em;' class='btn btn-primary' data-id='<?php echo $item['ID_ARTICULO']  ?>' data-nombre='<?php echo $item['NOMBRE_ARTICULO']  ?>' data-precio='<?php echo $item['PRECIO']  ?>'>
 
-                                <img height='25px' src='/public/img/carrito.png' alt='carrito'>
+                                <img height='25px' src='public/img/carrito.png' alt='carrito'>
                             </a>
                             <a href='javascript:;' onclick='mostrar_compra_modal(this);' class='btn btn-primary' data-bs-toggle='modal' data-bs-target='#modalCompra'>
-                                <img height='25px' src='/public/img/comprar.png' alt='comprar directo'>
+                                <img height='25px' src='public/img/comprar.png' alt='comprar directo'>
                             </a>
                         </div>
                     </div>
@@ -201,8 +201,8 @@ include_once './public/footer.php';
 ?>
 
 
-<script src="/public/js/articulo.js"></script>
-<script src="/public/js/carrito_compra.js"></script>
+<script src="public/js/articulo.js"></script>
+<script src="public/js/carrito_compra.js"></script>
 <script>
     window.onload = principal();
     window.onload = cargar_tipo_cambioA();
